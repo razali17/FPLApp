@@ -11,20 +11,17 @@ class App extends Component {
       isLoggedIn: false,
       email: "",
       password: "",
-      currentUser: 0,
       first_name: "",
       last_name: "",
       email: "",
       password: "",
       password_confirmation: "",
       data: "",
-      currentUserId: 0,
       currentUser: 0,
       current_roundup_balance: 0,
       balance_date: null,
-      plaid_token: "",
       user_votes: [0,0,0,0,0],
-      collective_votes: [],
+      collective_votes: [0,0,0,0,0],
       charities: [],
       goals: [],
       tests: [],
@@ -67,26 +64,15 @@ class App extends Component {
         first_name: this.state.first_name,
         last_name: this.state.last_name,
         password_confirmation: this.state.password_confirmation,
-        currentUser: 0,
-        isLoggedIn: false,
-        authentication_token: ""
       }
     })
     .then(response => {
       this.setState({
         isLoggedIn: true,
-        currentUser: response.data.first_name,
+        currentUser: response.data.user_id,
+        first_name: response.data.first_name,
       })
-    }).then(axios.get('/api/users', {withCredentials: true}) // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
-
-      console.log(response.data.users) // Just the message
-      // this.setState({
-      //   message: response.data.users[0].email
-      // });
-    }))
+    })
   };
 
   handleInputChange = (e) => {
@@ -115,7 +101,6 @@ class App extends Component {
     axios.delete('/api/session')
     this.setState({
         isLoggedIn: false,
-        authentication_token: "",
     })
   };
 
@@ -147,21 +132,21 @@ class App extends Component {
     arr1[v4] += 1
     arr1[v5] += 1
 
-    this.setState({
-      votes: arr1
-    })
-
-    let user_votes = [];
+    let new_user_votes = [];
     this.state.user_votes.forEach(vote => {
-     user_votes.push(vote * vote)
+     new_user_votes.push(vote * vote)
     })
-    axios.put('api/users/3', {
+    this.setState({
+      user_votes: new_user_votes
+    })
+    axios.put('api/users/id', {
       user: {
-      votes: this.state.user_votes
+      votes: new_user_votes
     }
     }).then(response => {
       this.setState({
-        user_votes: response.data.votes
+        user_votes: response.data.user_votes,
+        collective_votes: response.data.admin_votes
       });
     })
   }
@@ -171,7 +156,7 @@ class App extends Component {
       [e.target.name]: e.currentTarget.value
     });
   }
-  
+
   getTransactions = (e) => {
     e.preventDefault();
     axios.post('api/transactions', {

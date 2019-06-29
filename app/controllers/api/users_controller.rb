@@ -26,7 +26,8 @@ class Api::UsersController < ApplicationController
       session[:user_id] = @user.id
       render :json => {
         success: true,
-        user: @user.id
+        user_id: @user.id,
+        first_name: @user.first_name
       }
     else
       render :json => {message: "account not created"}
@@ -77,8 +78,8 @@ class Api::UsersController < ApplicationController
 
     render :json => {
       currentUser: user,
-      admin: admin,
-      votes: user.votes
+      admin_votes: admin.votes,
+      user_votes: user.votes
     }
 
   end
