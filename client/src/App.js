@@ -2,7 +2,7 @@ import React, { Component, Children, cloneElement } from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import PlaidLink from 'react-plaid-link';
+import PlaidLink from './components/PlaidLink';
 
 class App extends Component {
   constructor(props) {
@@ -306,9 +306,10 @@ class App extends Component {
         {Children.map(children, this.withRoute)}
         <PlaidLink
           clientName="Change Collective"
-          env="sandbox"
+          env="development"
+          countryCodes={['CA']}
           product={["auth", "transactions"]}
-          publicKey="a165568792fe5fd82ba0f4ecbef6da"
+          publicKey="2ae89ce59b9f812475f71e0d9aba50"
           onExit={this.handleOnExit}
           onSuccess={this.handleOnSuccess}>
           Open Link and connect your bank!

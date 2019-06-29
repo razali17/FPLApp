@@ -62,7 +62,16 @@ class Dashboard extends Component {
                 <p>${state.current_roundup_balance}</p>
                 <p>${state.collective_roundup_balance}</p>
               </div>
-              <div>
+
+            </Col>
+            <Col>
+              <p>Collective Achievements</p>
+                {charityList(state.charities)}
+            </Col>
+
+          </Row>
+          <Row>
+            <div>
                 <Accordion defaultActiveKey="0">
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -76,6 +85,7 @@ class Dashboard extends Component {
                             <th>Store Name</th>
                             <th>Amount</th>
                             <th>Date</th>
+                            <th>Amount Rounded</th>
                           </tr>
                         </thead>
                         {trans.length > 0 ?
@@ -85,6 +95,7 @@ class Dashboard extends Component {
                             <td>{tran.name}</td>
                             <td>{tran.amount}</td>
                             <td>{tran.date}</td>
+                            <td>{tran.roundup}</td>
                           </tr>
                         </tbody>) : null}
                       </Table>
@@ -93,12 +104,6 @@ class Dashboard extends Component {
                   </Card>
                 </Accordion>
               </div>
-            </Col>
-            <Col>
-              <p>Collective Achievements</p>
-                {charityList(state.charities)}
-            </Col>
-
           </Row>
           <hr />
           <Row className="mt-5">
