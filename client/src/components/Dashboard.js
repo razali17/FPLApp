@@ -14,14 +14,6 @@ import { Redirect } from 'react-router';
 import { Switch } from 'react-router-dom';
 
 
-// const isAuth = () => {
-//   axios.get('/api/session')
-//   .then((response) => {
-//     console.log(response.data.isLoggedIn)
-//       return response.data.isLoggedIn
-//   })
-// };
-
 const charityList = (charities) => {
   return charities.map(charity =>
     <ul>
@@ -41,32 +33,34 @@ class Dashboard extends Component {
       mainState: state,
     } = this.props
 
-    const v1 = 0
-    const v2 = 1
-    const v3 = 2
-    const v4 = 3
-    const v5 = 4
+    const v1 = state.user_votes[0]
+    const v2 = state.user_votes[1]
+    const v3 = state.user_votes[2]
+    const v4 = state.user_votes[3]
+    const v5 = state.user_votes[4]
 
-    // const v1 = user_votes[0]
-    // const v2 = user_votes[1]
-    // const v3 = user_votes[2]
-    // const v4 = user_votes[3]
-    // const v5 = user_votes[4]
+    const a1 = state.collective_votes[0]
+    const a2 = state.collective_votes[1]
+    const a3 = state.collective_votes[2]
+    const a4 = state.collective_votes[3]
+    const a5 = state.collective_votes[4]
+
     console.log(this.props.mainState.transactions)
     const trans = this.props.mainState.transactions
     return(
 
       <div>
-      {/*<Switch>*/}
+      {state.isLoggedIn ? (
         <Container>
 
-            <p pull-right> Hello, {this.props.mainState.first_name} </p>
+            <p pull-right> Hello, {state.first_name} </p>
 
           <Row>
             <Col>
               <p>Your Current Round Ups</p>
               <div className="roundup-bg">
-                <p>${this.props.mainState.current_roundup_balance}</p>
+                <p>${state.current_roundup_balance}</p>
+                <p>${state.collective_roundup_balance}</p>
               </div>
 
             </Col>
@@ -115,78 +109,91 @@ class Dashboard extends Component {
           <Row className="mt-5">
             <Col>
               <p>Your Votes</p>
+              <ReactMinimalPieChart
+                data={[
+                  {
+                    title: 'Dail Food Bank',
+                    value: v1,
+                    color: '#3D348B'
+                  },
+                  {
+                    title: 'Habitat for Humanity',
+                    value: v2,
+                    color: '#F7B801'
+                  },
+                  {
+                    title: 'Parkinson Canada',
+                    value: v3,
+                    color: '#9895F7'
+                  },
+                  {
+                    title: 'Princess Margaret Foundation',
+                    value: v4,
+                    color: '#F18701'
+                  },
+                  {
+                    title: 'Sick Kids',
+                    value: v5,
+                    color: '#F35B04'
+                  }
+                ]}
+                lineWidth={15}
+                rounded
+                animate
+                label
+                  labelStyle={{
+                    fontSize: '5px',
+                  }}
+                  labelPosition={60}
+              />
+            </Col>
+            <Col>
+              <p>Collective Votes</p>
                 <ReactMinimalPieChart
                   data={[
                     {
-                      title: 'Sick Kids',
-                      value: v1,
+                      title: 'Dail Food Bank',
+                      value: a1,
                       color: '#3D348B'
                     },
                     {
                       title: 'Habitat for Humanity',
-                      value: v2,
+                      aalue: a2,
                       color: '#F7B801'
                     },
                     {
-                      title: 'Daily Food Bank',
-                      value: v3,
+                      title: 'Parkinson Canada',
+                      value: a3,
                       color: '#9895F7'
                     },
                     {
                       title: 'Princess Margaret Foundation',
-                      value: v4,
+                      value: a4,
                       color: '#F18701'
                     },
                     {
-                      title: 'Parkinson Canada',
-                      value: v5,
+                      title: 'Sick Kids',
+                      value: a5,
                       color: '#F35B04'
                     }
                   ]}
                   lineWidth={15}
                   rounded
+                  animate
                   label
                     labelStyle={{
                       fontSize: '5px',
                     }}
                     labelPosition={60}
                 />
-              </Col>
-              <Col>
-              <p>Collective Votes</p>
-                <ReactMinimalPieChart
-                  data={[
-                    {
-                      title: 'One',
-                      value: 10,
-                      color: '#E38627'
-                    },
-                    {
-                      title: 'Two',
-                      value: 10,
-                      color: '#C13C37'
-                    },
-                    {
-                      title: 'Three',
-                      value: 5,
-                      color: '#6A2135'
-                    }
-                  ]}
-                  lineWidth={15}
-                  rounded
-                />
             </Col>
           </Row>
 
         </Container>
-{/*      </Switch>
-      )
+        )
       : (
-      <Switch>
-      <Redirect to='/login'/>
-        //<Login exact path ="/login" />
-      </Switch>
-      )}*/}
+        <Redirect to='/login'/>
+      )}
     </div>
     )
   }
