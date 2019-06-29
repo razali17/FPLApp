@@ -14,8 +14,10 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(sesssoin[:user_id])
+    @admin = User.where(is_admin: true)[0]
     render :json => {
       user: @user
+      admin: @admin
     }
   end
 

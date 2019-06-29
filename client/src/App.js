@@ -22,6 +22,7 @@ class App extends Component {
       balance_date: null,
       user_votes: [0,0,0,0,0],
       collective_votes: [0,0,0,0,0],
+      collective_roundup_balance: 0,
       charities: [],
       goals: [],
       tests: [],
@@ -168,11 +169,13 @@ class App extends Component {
   };
 
   getDashboardInfo = () => {
-    axios.get('api/session')
+    axios.get('api/users/:usre_id')
     .then(response => {
       this.setState({
-        current_roundup_balance: response.data.currentUser.current_roundup_balance,
-        user_votes: response.data.currentUser.votes,
+        current_roundup_balance: response.data.user.current_roundup_balance,
+        user_votes: response.data.user.votes,
+        collective_votes: response.data.admin.votes,
+        collective_roundup_balance: response.data.admin.current_roundup_balance,
       })
       localStorage.setItem("current_roundup_balance", response.data.current_roundup_balance)
       localStorage.setItem("user_votes", response.data.user_votes)
@@ -222,7 +225,7 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.currentTarget.value
     });
-    localStorage.setItem(e.target.name, e.traget.value)
+    localStorage.setItem(e.target.name, e.target.value)
   }
 
   getTransactions = (e) => {
