@@ -72,6 +72,7 @@ class App extends Component {
         currentUser: response.data.user_id,
         first_name: response.data.first_name,
       })
+      window.location = "/votes"
     })
   };
 
@@ -93,12 +94,14 @@ class App extends Component {
         currentUser: response.data.user_id,
         first_name: response.data.first_name
       })
+      window.location = "/votes"
     })
   };
 
   handleLogout = (e) => {
     e.preventDefault();
     axios.delete('/api/session')
+    window.location = "/"
     this.setState({
         isLoggedIn: false,
     })
@@ -149,6 +152,7 @@ class App extends Component {
         collective_votes: response.data.admin_votes
       });
     })
+    window.location = "/dashboard"
   }
 
   onVoteChanged = (e) => {
@@ -185,6 +189,7 @@ class App extends Component {
             handleRegister: this.handleRegister,
             handleInputChange: this.handleInputChange,
             isLoggedIn: this.isLoggedIn,
+            handleLogout: this.handleLogout,
             getDashboardInfo: this.getDashboardInfo,
             changeLoggedIn: this.changeLoggedIn,
             handleVoteSelection: this.handleVoteSelection,
