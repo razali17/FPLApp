@@ -35,6 +35,26 @@ class App extends Component {
     }
   };
 
+  hydrateStateWithLocalStorage() {
+    // for all items in state
+    for (let key in this.state) {
+      // if the key exists in localStorage
+      if (localStorage.hasOwnProperty(key)) {
+        // get the key's value from localStorage
+        let value = localStorage.getItem(key);
+
+        // parse the localStorage string and setState
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          // handle empty string
+          this.setState({ [key]: value });
+        }
+      }
+    }
+  }
+
  componentDidMount() {
     axios.get('/api/charities', {withCredentials: true})
 
@@ -43,7 +63,8 @@ class App extends Component {
         charities: response.data.charities,
         tests: response.data.tests
       })
-      console.log(response.data)
+      localStorage.setItem("charities", JSON.stringify(response.data.charities))
+      localStorage.setItem("tests", JSON.stringify(response.data.tests))
     })
 
     axios.get('/api/goals', {withCredentials: true})
@@ -51,8 +72,9 @@ class App extends Component {
       this.setState({
         goals: response.data.goals
       })
-      console.log(response.data)
+      localStorage.setItem("goals", JSON.stringify(response.data.goals))
     })
+    this.hydrateStateWithLocalStorage()
   }
 
   handleRegister = (e) =>  {
@@ -72,6 +94,9 @@ class App extends Component {
         currentUser: response.data.user_id,
         first_name: response.data.first_name,
       })
+      localStorage.setItem("isLoggedIn", true)
+      localStorage.setItem("currentUser", response.data.user_id)
+      localStorage.setItem("first_name", response.data.first_name)
     })
   };
 
@@ -79,6 +104,7 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+    localStorage.setItem(e.target.name, e.target.value)
   };
 
   handleLogin = (e) => {
@@ -93,6 +119,10 @@ class App extends Component {
         currentUser: response.data.user_id,
         first_name: response.data.first_name
       })
+      localStorage.setItem("isLoggedIn", true)
+      localStorage.setItem("currentUser", response.data.user_id)
+      localStorage.setItem("first_name", response.data.first_name)
+
     })
   };
 
@@ -102,6 +132,7 @@ class App extends Component {
     this.setState({
         isLoggedIn: false,
     })
+    localStorage.setItem("isLoggedIn", false)
   };
 
   getDashboardInfo = () => {
@@ -109,10 +140,10 @@ class App extends Component {
     .then(response => {
       this.setState({
         current_roundup_balance: response.data.currentUser.current_roundup_balance,
-        balance_date: response.data.currentUser.balance_date,
-        plaid_token: response.data.currentUser.plaid_token,
         user_votes: response.data.currentUser.votes,
       })
+      localStorage.setItem("current_roundup_balance", response.data.current_roundup_balance)
+      localStorage.setItem("user_votes", response.data.user_votes)
     })
   }
 
@@ -139,6 +170,7 @@ class App extends Component {
     this.setState({
       user_votes: new_user_votes
     })
+    localStorage.setItem("user_votes", JSON.stringify(new_user_votes))
     axios.put('api/users/id', {
       user: {
       votes: new_user_votes
@@ -148,6 +180,8 @@ class App extends Component {
         user_votes: response.data.user_votes,
         collective_votes: response.data.admin_votes
       });
+      localStorage.setItem("user_votes", JSON.stringify(response.data.user_votes))
+      localStorage.setItem("collective_votes", JSON.stringify(response.data.admin_votes))
     })
   }
 
@@ -155,6 +189,7 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.currentTarget.value
     });
+    localStorage.setItem(e.target.name, e.traget.value)
   }
 
   getTransactions = (e) => {
@@ -167,6 +202,7 @@ class App extends Component {
       this.setState({
         transactions: response.data.transaction
       })
+      localStorage.setItem("transactions", JSON.stringify(response.data.transaction))
     })
   }
 
