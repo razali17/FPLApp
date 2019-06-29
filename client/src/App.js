@@ -121,6 +121,7 @@ class App extends Component {
       localStorage.setItem("isLoggedIn", true)
       localStorage.setItem("currentUser", response.data.user_id)
       localStorage.setItem("first_name", response.data.first_name)
+      window.location = "/votes"
     })
   };
 
@@ -149,6 +150,7 @@ class App extends Component {
       localStorage.setItem("isLoggedIn", true)
       localStorage.setItem("currentUser", response.data.user_id)
       localStorage.setItem("first_name", response.data.first_name)
+      window.location = "/votes"
     })
   };
 
@@ -157,6 +159,7 @@ class App extends Component {
     localStorage.clear()
     axios.delete('/api/session')
     .then(response => {
+    window.location = "/"
     this.setState({
         isLoggedIn: false,
     })
@@ -212,6 +215,7 @@ class App extends Component {
       localStorage.setItem("user_votes", JSON.stringify(response.data.user_votes))
       localStorage.setItem("collective_votes", JSON.stringify(response.data.admin_votes))
     })
+    window.location = "/dashboard"
   }
 
   onVoteChanged = (e) => {
@@ -251,6 +255,7 @@ class App extends Component {
             handleInputChange: this.handleInputChange,
             handleLogout: this.handleLogout,
             isLoggedIn: this.isLoggedIn,
+            handleLogout: this.handleLogout,
             getDashboardInfo: this.getDashboardInfo,
             changeLoggedIn: this.changeLoggedIn,
             handleVoteSelection: this.handleVoteSelection,
