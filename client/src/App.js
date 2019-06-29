@@ -2,7 +2,7 @@ import React, { Component, Children, cloneElement } from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import PlaidLink from 'react-plaid-link';
+import PlaidLink from './components/PlaidLink';
 
 class App extends Component {
   constructor(props) {
@@ -11,18 +11,15 @@ class App extends Component {
       isLoggedIn: false,
       email: "",
       password: "",
-      currentUser: 0,
       first_name: "",
       last_name: "",
       email: "",
       password: "",
       password_confirmation: "",
       data: "",
-      currentUserId: 0,
       currentUser: 0,
       current_roundup_balance: 0,
       balance_date: null,
-      plaid_token: "",
       user_votes: [0,0,0,0,0],
       collective_votes: [],
       charities: [],
@@ -67,15 +64,13 @@ class App extends Component {
         first_name: this.state.first_name,
         last_name: this.state.last_name,
         password_confirmation: this.state.password_confirmation,
-        currentUser: 0,
-        isLoggedIn: false,
-        authentication_token: ""
       }
     })
     .then(response => {
       this.setState({
         isLoggedIn: true,
-        currentUser: response.data.first_name,
+        currentUser: response.data.user_id,
+        first_name: response.data.first_name,
       })
     }).then(axios.get('/api/users', {withCredentials: true}) // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
@@ -171,7 +166,7 @@ class App extends Component {
       [e.target.name]: e.currentTarget.value
     });
   }
-  
+
   getTransactions = (e) => {
     e.preventDefault();
     axios.post('api/transactions', {
@@ -247,9 +242,10 @@ class App extends Component {
         {Children.map(children, this.withRoute)}
         <PlaidLink
           clientName="Change Collective"
-          env="sandbox"
+          env="development"
+          countryCodes={['CA']}
           product={["auth", "transactions"]}
-          publicKey="a165568792fe5fd82ba0f4ecbef6da"
+          publicKey="2ae89ce59b9f812475f71e0d9aba50"
           onExit={this.handleOnExit}
           onSuccess={this.handleOnSuccess}>
           Open Link and connect your bank!
