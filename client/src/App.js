@@ -55,6 +55,14 @@ class App extends Component {
     }
   }
 
+  saveStateToLocalStorage() {
+    // for every item in React state
+    for (let key in this.state) {
+      // save to localStorage
+      localStorage.setItem(key, JSON.stringify(this.state[key]));
+    }
+  }
+
  componentDidMount() {
     axios.get('/api/charities', {withCredentials: true})
 
@@ -75,6 +83,22 @@ class App extends Component {
       localStorage.setItem("goals", JSON.stringify(response.data.goals))
     })
     this.hydrateStateWithLocalStorage()
+    // add event listener to save state to localStorage
+    // when user leaves/refreshes the page
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+
+    // saves if component has a chance to unmount
+    this.saveStateToLocalStorage();
   }
 
   handleRegister = (e) =>  {
@@ -104,8 +128,11 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    localStorage.setItem(e.target.name, e.target.value)
-  };
+    if (e.target.name === "password" || e.target.name === "password_confirmation") {
+      localStorage.setItem("password", "hidden")
+    }
+    else {localStorage.setItem(e.target.name, e.target.value)}
+  }
 
   handleLogin = (e) => {
     e.preventDefault();
@@ -122,17 +149,19 @@ class App extends Component {
       localStorage.setItem("isLoggedIn", true)
       localStorage.setItem("currentUser", response.data.user_id)
       localStorage.setItem("first_name", response.data.first_name)
-
     })
   };
 
   handleLogout = (e) => {
     e.preventDefault();
+    localStorage.clear()
     axios.delete('/api/session')
+    .then(response => {
     this.setState({
         isLoggedIn: false,
     })
     localStorage.setItem("isLoggedIn", false)
+    })
   };
 
   getDashboardInfo = () => {
@@ -220,6 +249,7 @@ class App extends Component {
             handleLogin: this.handleLogin,
             handleRegister: this.handleRegister,
             handleInputChange: this.handleInputChange,
+            handleLogout: this.handleLogout,
             isLoggedIn: this.isLoggedIn,
             getDashboardInfo: this.getDashboardInfo,
             changeLoggedIn: this.changeLoggedIn,
