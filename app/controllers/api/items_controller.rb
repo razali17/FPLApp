@@ -1,5 +1,3 @@
-require 'plaid'
-
 class Api::ItemsController < PlaidController
 
     def create
@@ -9,16 +7,13 @@ class Api::ItemsController < PlaidController
     @item = Item.new(item_params)
     @item.access_token = access_token
 
-
-
-    # @item.access_token = access_token
     if @item.save
       render :json => {
         message: "CREATED!",
         item: @item
       }
     else
-      render :json => {message: "account not saved!"}
+      render :json => {message: "There was no transactions!"}
     end
   end
 
