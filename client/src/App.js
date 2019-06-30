@@ -31,8 +31,14 @@ class App extends Component {
       vote3:"",
       vote4:"",
       vote5:"",
-      transactions: []
-
+      transactions: [],
+      goalObj: {
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: []
+      }
     }
   };
 
@@ -66,7 +72,6 @@ class App extends Component {
 
  componentDidMount() {
     axios.get('/api/charities', {withCredentials: true})
-
     .then((response) => {
       this.setState({
         charities: response.data.charities,
@@ -81,7 +86,9 @@ class App extends Component {
       this.setState({
         goals: response.data.goals
       })
+      console.log(response.data)
       localStorage.setItem("goals", JSON.stringify(response.data.goals))
+
     })
     this.hydrateStateWithLocalStorage()
     // // add event listener to save state to localStorage
@@ -182,6 +189,15 @@ class App extends Component {
     })
   }
 
+  displayObjectives = (tests) => {
+    tests.forEach(test => {
+      console.log("test", test)
+      if (test.id in this.state.goalObj) {
+        console.log("here")
+        this.state.goalObj[test.id].push(test.objective)
+      }
+    });
+  }
 
   handleVoteSelection = (e) => {
     e.preventDefault();
@@ -265,6 +281,7 @@ class App extends Component {
             handleVoteSelection: this.handleVoteSelection,
             onVoteChanged: this.onVoteChanged,
             getTransactions: this.getTransactions,
+            displayObjectives: this.displayObjectives,
             ...routeProps
           }
           )}

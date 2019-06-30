@@ -1,13 +1,10 @@
 import React from 'react';
 import '../HeroSection.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
+import { Container, Row, Col, Image } from 'react-bootstrap/';
+import {Link} from 'react-router-dom';
+
 
 const HeroSection = props => (
-  <div>
-    {/*<NavBar mainState={this.props.mainState} />*/}
   <div className='App'>
     <Container fluid className="hero-section">
       <Row className="hero-background-color" id="home">
@@ -54,31 +51,25 @@ const HeroSection = props => (
           </div>
         </Col>
       </Row>
-      <Container>
-        <Row>
-          <Col xs={6} md={4}>
-            <Image src={'https://i.imgur.com/PdnVWGx.png'} alt="Habitat for Humanity. Habitat pour l'humanité. Canada" rounded />
-          </Col>
-          <Col xs={6} md={4}>
-            <Image src={'https://i.imgur.com/7BkiXTN.png'} roundedCircle />
-          </Col>
-          <Col xs={6} md={4}>
-            <Image src="holder.js/171x180" thumbnail />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={8} md={4}>
-            <Image src="holder.js/171x180" rounded />
-          </Col>
-          <Col xs={8} md={4}>
-            <Image src="holder.js/171x180" roundedCircle />
-          </Col>
+      <Row className="home-charities" id="home-charities">
 
-        </Row>
-
-      </Container>
+        <Col>
+          <Image src={'https://i.imgur.com/PdnVWGx.png'} alt="Habitat for Humanity. Habitat pour l'humanité. Canada"  />
+        </Col>
+        <Col>
+          <Image src={'https://i.imgur.com/7BkiXTN.png'}  alt="Habitat for Humanity. Habitat pour l'humanité. Canada" />
+        </Col>
+        <Col>
+          <Image src={'https://i.imgur.com/HGj2mrR.png'}  alt="Habitat for Humanity. Habitat pour l'humanité. Canada" />
+        </Col>
+        <Col>
+          <Image src={'https://i.imgur.com/8mO4p7w.png'}  alt="Habitat for Humanity. Habitat pour l'humanité. Canada" />
+        </Col>
+        <Col>
+          <Image src={'https://i.imgur.com/KI4Xl6q.png'} alt="Habitat for Humanity. Habitat pour l'humanité. Canada"  />
+        </Col>
+      </Row>
     </Container>
-  </div>
   </div>
 );
 

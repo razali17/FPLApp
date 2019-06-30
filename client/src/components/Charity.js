@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import NavBar from './NavBar.js'
 import {Carousel, Container, Row, Col} from 'react-bootstrap';
 
 const style =  {
@@ -9,22 +7,15 @@ const style =  {
 
 const printChars = (tests) => {
   return tests.map( test =>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={test.image}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3 style={style}>{test.name}</h3>
-            <p style={style}>{test.desc}</p>
-            <p style={style}>{test.objective}</p>
-
-
-          </Carousel.Caption>
-        </Carousel.Item>
-      )
-
+    <Carousel.Item>
+      <img className="d-block w-100" src={ test.image } alt="First slide" />
+      <Carousel.Caption>
+        <p style={style}>{test.desc}</p>
+        <p style={style}>{test.objective}</p>
+        {console.log("this is the objectives:", test.objective)}
+      </Carousel.Caption>
+    </Carousel.Item>
+  )
 }
 
 class Charity extends Component {
