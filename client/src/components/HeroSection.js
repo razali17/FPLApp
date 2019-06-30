@@ -1,9 +1,8 @@
 import React from 'react';
 import '../HeroSection.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
+import { Container, Row, Col, Image } from 'react-bootstrap/';
+import {Link} from 'react-router-dom';
+
 
 const HeroSection = props => (
   <div className='App'>
@@ -53,6 +52,7 @@ const HeroSection = props => (
         </Col>
       </Row>
       <Row className="home-charities" id="home-charities">
+
         <Col>
           <Image src={'https://i.imgur.com/PdnVWGx.png'} alt="Habitat for Humanity. Habitat pour l'humanité. Canada"  />
         </Col>
