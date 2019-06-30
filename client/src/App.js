@@ -56,13 +56,13 @@ class App extends Component {
     }
   }
 
-  saveStateToLocalStorage() {
-    // for every item in React state
-    for (let key in this.state) {
-      // save to localStorage
-      localStorage.setItem(key, JSON.stringify(this.state[key]));
-    }
-  }
+  // saveStateToLocalStorage() {
+  //   // for every item in React state
+  //   for (let key in this.state) {
+  //     // save to localStorage
+  //     localStorage.setItem(key, JSON.stringify(this.state[key]));
+  //   }
+  // }
 
  componentDidMount() {
     axios.get('/api/charities', {withCredentials: true})
@@ -84,23 +84,23 @@ class App extends Component {
       localStorage.setItem("goals", JSON.stringify(response.data.goals))
     })
     this.hydrateStateWithLocalStorage()
-    // add event listener to save state to localStorage
-    // when user leaves/refreshes the page
-    window.addEventListener(
-      "beforeunload",
-      this.saveStateToLocalStorage.bind(this)
-    );
+    // // add event listener to save state to localStorage
+    // // when user leaves/refreshes the page
+    // window.addEventListener(
+    //   "beforeunload",
+    //   this.saveStateToLocalStorage.bind(this)
+    // );
   }
 
-  componentWillUnmount() {
-    window.removeEventListener(
-      "beforeunload",
-      this.saveStateToLocalStorage.bind(this)
-    );
+  // componentWillUnmount() {
+  //   window.removeEventListener(
+  //     "beforeunload",
+  //     this.saveStateToLocalStorage.bind(this)
+  //   );
 
-    // saves if component has a chance to unmount
-    this.saveStateToLocalStorage();
-  }
+  //   // saves if component has a chance to unmount
+  //   this.saveStateToLocalStorage();
+  // }
 
   handleRegister = (e) =>  {
     e.preventDefault();
@@ -151,7 +151,7 @@ class App extends Component {
       localStorage.setItem("isLoggedIn", true)
       localStorage.setItem("currentUser", response.data.user_id)
       localStorage.setItem("first_name", response.data.first_name)
-      window.location = "/votes"
+      window.location = "/dashboard"
     })
   };
 
@@ -169,11 +169,11 @@ class App extends Component {
   };
 
   getDashboardInfo = () => {
-    axios.get('api/users/:usre_id')
+    axios.get('api/session')
     .then(response => {
       this.setState({
-        current_roundup_balance: response.data.user.current_roundup_balance,
-        user_votes: response.data.user.votes,
+        current_roundup_balance: response.data.currentUser.current_roundup_balance,
+        user_votes: response.data.currentUser.votes,
         collective_votes: response.data.admin.votes,
         collective_roundup_balance: response.data.admin.current_roundup_balance,
       })
@@ -191,7 +191,7 @@ class App extends Component {
     let v4 = Number(this.state.vote4)
     let v5 = Number(this.state.vote5)
 
-    let arr1 = this.state.user_votes
+    let arr1 = [0,0,0,0,0]
     arr1[v1] += 1
     arr1[v2] += 1
     arr1[v3] += 1
@@ -199,7 +199,7 @@ class App extends Component {
     arr1[v5] += 1
 
     let new_user_votes = [];
-    this.state.user_votes.forEach(vote => {
+    arr1.forEach(vote => {
      new_user_votes.push(vote * vote)
     })
     this.setState({
@@ -217,8 +217,9 @@ class App extends Component {
       });
       localStorage.setItem("user_votes", JSON.stringify(response.data.user_votes))
       localStorage.setItem("collective_votes", JSON.stringify(response.data.admin_votes))
+      window.location = "/dashboard"
     })
-    window.location = "/dashboard"
+
   }
 
   onVoteChanged = (e) => {

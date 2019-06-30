@@ -18,6 +18,19 @@ unless Rails.env.development?
   exit 0
 end
 
+#Creating Admin
+puts "Creating Admin"
+User.destroy_all
+
+User.create!({
+ first_name: 'Admin',
+ last_name: 'Admin',
+ email: 'admin@test.com',
+ password: 'test',
+ is_admin: true,
+ current_roundup_balance: 20020.35,
+ votes: [35,62,11,36,101]
+})
 
 #Charities
 puts "Creating Charities..."

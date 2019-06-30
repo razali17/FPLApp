@@ -3,6 +3,8 @@ class Api::TransactionsController < PlaidController
     client = plaid_client
     item = Item.find_by_user_id(params[:user_id]);
     user = User.find_by_id(params[:user_id]);
+    admin = User.where(is_admin: true)[0]
+    oldAdminBal = admin.current_roundup_balance
 
     if Transaction.where(item_id: item)
 
@@ -39,6 +41,8 @@ class Api::TransactionsController < PlaidController
       end
 
       user.current_roundup_balance = roundup
+      admin.current_roundup_balance = oldAdminBal + roundup
+      admin.save
       user.save
 
     end

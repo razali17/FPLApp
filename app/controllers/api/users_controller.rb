@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
     @user = User.find_by_id(sesssoin[:user_id])
     @admin = User.where(is_admin: true)[0]
     render :json => {
-      user: @user
+      user: @user,
       admin: @admin
     }
   end
@@ -71,7 +71,18 @@ class Api::UsersController < ApplicationController
     puts user_votes.class
     puts "new user votes"
     # new_user_votes = user_votes.tr('["]', '').split(',').map(&:to_i)
-    new_admin_votes = new_admin_votes.zip(user_votes).map{|pair| pair.reduce(&:+)}
+    # new_admin_votes = new_admin_votes.zip(user_votes).map{|pair| pair.reduce(&:+)}
+    a1 = admin_votes[0]
+    a2 = admin_votes[1]
+    a3 = admin_votes[2]
+    a4 = admin_votes[3]
+    a5 = admin_votes[4]
+    u1 = admin_votes[0]
+    u2 = admin_votes[1]
+    u3 = admin_votes[2]
+    u4 = admin_votes[3]
+    u5 = admin_votes[4]
+    new_admin_votes = [a1+u1,a2+u2,a3+u3,a4+u4,a5+u5]
     puts "new admin votes"
     puts new_admin_votes
     user.update_attributes(user_params)
@@ -89,7 +100,7 @@ class Api::UsersController < ApplicationController
   # private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :plaid_token, :stripe_token, :current_roundup_balance, :balance_date, :is_admin, votes: [] )
+    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :plaid_token, :stripe_token, :current_roundup_balance, :balance_date, :is_admin, votes: [])
   end
 
 end

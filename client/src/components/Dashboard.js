@@ -39,18 +39,25 @@ class Dashboard extends Component {
     const v4 = state.user_votes[3]
     const v5 = state.user_votes[4]
 
-    const a1 = state.collective_votes[0]
-    const a2 = state.collective_votes[1]
-    const a3 = state.collective_votes[2]
-    const a4 = state.collective_votes[3]
-    const a5 = state.collective_votes[4]
+    const b1 = state.collective_votes[0]
+    const b2 = state.collective_votes[1]
+    const b3 = state.collective_votes[2]
+    const b4 = state.collective_votes[3]
+    const b5 = state.collective_votes[4]
+
+    const total = b1+b2+b3+b4+b5
+
+    const a1 = (b1/total) * 100
+    const a2 = (b2/total) * 100
+    const a3 = (b3/total) * 100
+    const a4 = (b4/total) * 100
+    const a5 = (b5/total) * 100
 
     console.log(this.props.mainState.transactions)
     const trans = this.props.mainState.transactions
     return(
 
       <div>
-      {state.isLoggedIn ? (
         <Container>
 
             <p pull-right> Hello, {state.first_name} </p>
@@ -140,9 +147,9 @@ class Dashboard extends Component {
                 lineWidth={15}
                 rounded
                 animate
-                label
+                label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].value + " - " + data[dataIndex].title):(""))}
                   labelStyle={{
-                    fontSize: '5px',
+                    fontSize: '2px',
                   }}
                   labelPosition={60}
               />
@@ -152,13 +159,13 @@ class Dashboard extends Component {
                 <ReactMinimalPieChart
                   data={[
                     {
-                      title: 'Dail Food Bank',
+                      title: 'Daily Food Bank',
                       value: a1,
                       color: '#3D348B'
                     },
                     {
                       title: 'Habitat for Humanity',
-                      aalue: a2,
+                      value: a2,
                       color: '#F7B801'
                     },
                     {
@@ -180,9 +187,9 @@ class Dashboard extends Component {
                   lineWidth={15}
                   rounded
                   animate
-                  label
+                  label={({data, dataIndex}) => Math.round(data[dataIndex].value) + '% - ' + data[dataIndex].title}
                     labelStyle={{
-                      fontSize: '5px',
+                      fontSize: '2px',
                     }}
                     labelPosition={60}
                 />
@@ -190,10 +197,7 @@ class Dashboard extends Component {
           </Row>
 
         </Container>
-        )
-      : (
-        <Redirect to='/login'/>
-      )}
+
     </div>
     )
   }
