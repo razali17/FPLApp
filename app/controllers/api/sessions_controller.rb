@@ -18,13 +18,15 @@ class Api::SessionsController < ApplicationController
   def show
     flag = false
     currentUser = nil
+    @admin = User.where(is_admin: true)[0]
     if session[:user_id]
       flag = true
       currentUser = User.find_by_id(session[:user_id])
     end
     render :json => {
       isLoggedIn: flag,
-      currentUser: currentUser}
+      currentUser: currentUser,
+      admin: @admin}
   end
 
 

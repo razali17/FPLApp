@@ -8,9 +8,10 @@ import { HashLink as Links } from 'react-router-hash-link';
 class NavBar extends Component {
   render() {
     const {
-      mainState: user,
+      mainState: state,
       handleLogout,
-      handleVoteSelection
+      handleVoteSelection,
+      getTransactions,
     } = this.props;
 
     return(
@@ -26,6 +27,8 @@ class NavBar extends Component {
             <Nav.Link><Links to="/#home-why">Why</Links></Nav.Link>
             <Nav.Link><Links to="/#home-collective">The Collective</Links></Nav.Link>
             <Nav.Link><Links to="/#home-charities">Charities</Links></Nav.Link>
+            {state.isLoggedIn ? (
+            <ButtonToolbar>
             <form onSubmit={this.props.getTransactions} >
               <Button className='mr-1' variant="outline-dark">Transactions</Button>
             </form>
@@ -36,38 +39,17 @@ class NavBar extends Component {
               <Button type="submit" className='mr-1' variant="outline-dark">Votes</Button>
             </form>
             <Button className='mr-1' variant="outline-dark">Settings</Button>
-            <Button className='mr-1' variant="outline-dark"><Link to="/charities">Charities</Link></Button>
             <Button className='mr-1' variant="outline-dark"><Link to="/dashboard">Dashboard</Link></Button>
+          </ButtonToolbar>
+            ) : (
+          <ButtonToolbar>
             <Button className='mr-1' variant="outline-dark"><Link to="/login">Login</Link></Button>
             <Button className='mr-1' variant="outline-dark"><Link to="/register">Register</Link></Button>
+          </ButtonToolbar>
+          )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/*<Nav className="justify-content-end m-3" activeKey="/home">
-        <Nav.Item>
-
-        </Nav.Item>
-        <Nav.Item>
-
-        </Nav.Item>
-        <Nav.Item>
-
-        </Nav.Item>
-        <Nav.Item>
-
-        </Nav.Item>
-        <Nav.Item>
-          <ButtonToolbar>
-
-
-
-
-          </ButtonToolbar>
-          <ButtonToolbar>
-
-          </ButtonToolbar>
-        </Nav.Item>
-      </Nav>*/}
       </div>
     )
   }

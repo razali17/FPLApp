@@ -14,14 +14,6 @@ import { Redirect } from 'react-router';
 import { Switch } from 'react-router-dom';
 
 
-// const isAuth = () => {
-//   axios.get('/api/session')
-//   .then((response) => {
-//     console.log(response.data.isLoggedIn)
-//       return response.data.isLoggedIn
-//   })
-// };
-
 const charityList = (charities) => {
   return charities.map(charity =>
     <ul>
@@ -41,34 +33,52 @@ class Dashboard extends Component {
       mainState: state,
     } = this.props
 
-    const v1 = 0
-    const v2 = 1
-    const v3 = 2
-    const v4 = 3
-    const v5 = 4
+    const v1 = state.user_votes[0]
+    const v2 = state.user_votes[1]
+    const v3 = state.user_votes[2]
+    const v4 = state.user_votes[3]
+    const v5 = state.user_votes[4]
 
-    // const v1 = user_votes[0]
-    // const v2 = user_votes[1]
-    // const v3 = user_votes[2]
-    // const v4 = user_votes[3]
-    // const v5 = user_votes[4]
+    const b1 = state.collective_votes[0]
+    const b2 = state.collective_votes[1]
+    const b3 = state.collective_votes[2]
+    const b4 = state.collective_votes[3]
+    const b5 = state.collective_votes[4]
+
+    const total = b1+b2+b3+b4+b5
+
+    const a1 = (b1/total) * 100
+    const a2 = (b2/total) * 100
+    const a3 = (b3/total) * 100
+    const a4 = (b4/total) * 100
+    const a5 = (b5/total) * 100
+
     console.log(this.props.mainState.transactions)
     const trans = this.props.mainState.transactions
     return(
 
       <div>
-      {/*<Switch>*/}
         <Container>
 
-            <p pull-right> Hello, {this.props.mainState.first_name} </p>
+            <p pull-right> Hello, {state.first_name} </p>
 
           <Row>
             <Col>
               <p>Your Current Round Ups</p>
               <div className="roundup-bg">
-                <p>${this.props.mainState.current_roundup_balance}</p>
+                <p>${state.current_roundup_balance}</p>
+                <p>${state.collective_roundup_balance}</p>
               </div>
-              <div>
+
+            </Col>
+            <Col>
+              <p>Collective Achievements</p>
+                {charityList(state.charities)}
+            </Col>
+
+          </Row>
+          <Row>
+            <div>
                 <Accordion defaultActiveKey="0">
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -82,6 +92,7 @@ class Dashboard extends Component {
                             <th>Store Name</th>
                             <th>Amount</th>
                             <th>Date</th>
+                            <th>Amount Rounded</th>
                           </tr>
                         </thead>
                         {trans.length > 0 ?
@@ -91,6 +102,7 @@ class Dashboard extends Component {
                             <td>{tran.name}</td>
                             <td>{tran.amount}</td>
                             <td>{tran.date}</td>
+                            <td>{tran.roundup}</td>
                           </tr>
                         </tbody>) : null}
                       </Table>
@@ -99,89 +111,93 @@ class Dashboard extends Component {
                   </Card>
                 </Accordion>
               </div>
-            </Col>
-            <Col>
-              <p>Collective Achievements</p>
-                {charityList(state.charities)}
-            </Col>
-
           </Row>
           <hr />
           <Row className="mt-5">
             <Col>
               <p>Your Votes</p>
+              <ReactMinimalPieChart
+                data={[
+                  {
+                    title: 'Dail Food Bank',
+                    value: v1,
+                    color: '#3D348B'
+                  },
+                  {
+                    title: 'Habitat for Humanity',
+                    value: v2,
+                    color: '#F7B801'
+                  },
+                  {
+                    title: 'Parkinson Canada',
+                    value: v3,
+                    color: '#9895F7'
+                  },
+                  {
+                    title: 'Princess Margaret Foundation',
+                    value: v4,
+                    color: '#F18701'
+                  },
+                  {
+                    title: 'Sick Kids',
+                    value: v5,
+                    color: '#F35B04'
+                  }
+                ]}
+                lineWidth={15}
+                rounded
+                animate
+                label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].value + " - " + data[dataIndex].title):(""))}
+                  labelStyle={{
+                    fontSize: '2px',
+                  }}
+                  labelPosition={60}
+              />
+            </Col>
+            <Col>
+              <p>Collective Votes</p>
                 <ReactMinimalPieChart
                   data={[
                     {
-                      title: 'Sick Kids',
-                      value: v1,
+                      title: 'Daily Food Bank',
+                      value: a1,
                       color: '#3D348B'
                     },
                     {
                       title: 'Habitat for Humanity',
-                      value: v2,
+                      value: a2,
                       color: '#F7B801'
                     },
                     {
-                      title: 'Daily Food Bank',
-                      value: v3,
+                      title: 'Parkinson Canada',
+                      value: a3,
                       color: '#9895F7'
                     },
                     {
                       title: 'Princess Margaret Foundation',
-                      value: v4,
+                      value: a4,
                       color: '#F18701'
                     },
                     {
-                      title: 'Parkinson Canada',
-                      value: v5,
+                      title: 'Sick Kids',
+                      value: a5,
                       color: '#F35B04'
                     }
                   ]}
                   lineWidth={15}
                   rounded
-                  label
+                  animate
+                  label={({data, dataIndex}) => Math.round(data[dataIndex].value) + '% - ' + data[dataIndex].title}
                     labelStyle={{
-                      fontSize: '5px',
+                      fontSize: '2px',
                     }}
                     labelPosition={60}
-                />
-              </Col>
-              <Col>
-              <p>Collective Votes</p>
-                <ReactMinimalPieChart
-                  data={[
-                    {
-                      title: 'One',
-                      value: 10,
-                      color: '#E38627'
-                    },
-                    {
-                      title: 'Two',
-                      value: 10,
-                      color: '#C13C37'
-                    },
-                    {
-                      title: 'Three',
-                      value: 5,
-                      color: '#6A2135'
-                    }
-                  ]}
-                  lineWidth={15}
-                  rounded
                 />
             </Col>
           </Row>
 
         </Container>
-{/*      </Switch>
-      )
-      : (
-      <Switch>
-      <Redirect to='/login'/>
-        //<Login exact path ="/login" />
-      </Switch>
-      )}*/}
+
     </div>
     )
   }
