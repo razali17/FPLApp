@@ -56,7 +56,7 @@ input#formBasicPassword.form-control::placeholder {
   ;
 }
 
-.btn {
+.loginbtn {
   display:flex;
   justify-content:flex-end;
   align-items:center;
@@ -64,7 +64,7 @@ input#formBasicPassword.form-control::placeholder {
   color: white;
 }
 
-.btn:hover {
+.loginbtn:hover {
   color: white;
   border:  1px solid black;
 }

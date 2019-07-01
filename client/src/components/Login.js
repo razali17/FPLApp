@@ -23,7 +23,7 @@ class Login extends Component {
               <Form.Group controlId="formBasicPassword">
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
-              <Button className="float-right" variant="outline-dark" type="submit" pull-right>
+              <Button className="float-right loginbtn" variant="outline-dark" type="submit" pull-right>
                 Login
               </Button>
             </Form>
