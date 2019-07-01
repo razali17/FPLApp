@@ -13,10 +13,7 @@ class App extends Component {
       password: "",
       first_name: "",
       last_name: "",
-      email: "",
-      password: "",
       password_confirmation: "",
-      data: "",
       currentUser: 0,
       current_roundup_balance: 0,
       balance_date: null,
@@ -60,14 +57,6 @@ class App extends Component {
     }
   }
 
-  // saveStateToLocalStorage() {
-  //   // for every item in React state
-  //   for (let key in this.state) {
-  //     // save to localStorage
-  //     localStorage.setItem(key, JSON.stringify(this.state[key]));
-  //   }
-  // }
-
  componentDidMount() {
   if (!this.state.charities) {
     axios.get('/api/charities', {withCredentials: true})
@@ -99,24 +88,9 @@ class App extends Component {
       localStorage.setItem("goals", JSON.stringify(response.data.goals))
 
     })
+
     this.hydrateStateWithLocalStorage()
-    // // add event listener to save state to localStorage
-    // // when user leaves/refreshes the page
-    // window.addEventListener(
-    //   "beforeunload",
-    //   this.saveStateToLocalStorage.bind(this)
-    // );
   }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener(
-  //     "beforeunload",
-  //     this.saveStateToLocalStorage.bind(this)
-  //   );
-
-  //   // saves if component has a chance to unmount
-  //   this.saveStateToLocalStorage();
-  // }
 
   handleRegister = (e) =>  {
     e.preventDefault();

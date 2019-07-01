@@ -8,6 +8,7 @@ class Login extends Component {
     const {
       handleInputChange: handleChange,
       handleLogin,
+      mainState: state,
     } = this.props;
 
     return (
@@ -16,12 +17,12 @@ class Login extends Component {
           <Row className="loginform" id="loginform">
             <Form onSubmit={handleLogin}>
               <Form.Group controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control onChange = {handleChange} name="email" type="email" placeholder="Enter email" />
                 <Form.Text className="text-muted">
                 </Form.Text>
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control onChange = {handleChange} name="password" type="password" placeholder="Password" />
               </Form.Group>
               <Button className="float-right loginbtn" variant="outline-dark" type="submit" pull-right>
                 Login

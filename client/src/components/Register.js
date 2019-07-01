@@ -16,25 +16,25 @@ class Register extends Component {
           <Row className="loginform" id="loginform">
             <Form onSubmit={handleRegister}>
             <Form.Group controlId="formBasicEmail">
-                <Form.Control type="text" placeholder="First Name" />
+                <Form.Control onChange = {handleChange} name="first_name" type="text" placeholder="First Name" />
                 <Form.Text className="text-muted">
                 </Form.Text>
               </Form.Group>
             <Form.Group controlId="formBasicEmail">
-                <Form.Control type="text" placeholder="Last Name" />
+                <Form.Control onChange = {handleChange} name="last_name" type="text" placeholder="Last Name" />
                 <Form.Text className="text-muted">
                 </Form.Text>
               </Form.Group>
               <Form.Group controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control onChange = {handleChange} name="email" type="email" placeholder="Enter email" />
                 <Form.Text className="text-muted">
                 </Form.Text>
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control onChange = {handleChange} name="password" type="password" placeholder="Password" />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Confirm Password" />
+                <Form.Control onChange = {handleChange} name="password_confirmation" type="password" placeholder="Confirm Password" />
               </Form.Group>
               <Button className="float-right loginbtn" variant="outline-dark" type="submit" pull-right>
                 Register
