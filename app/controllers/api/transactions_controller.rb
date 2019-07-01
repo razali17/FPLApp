@@ -1,9 +1,12 @@
 class Api::TransactionsController < PlaidController
   def create
+    sortedGoals = Array.new
     client = plaid_client
-    item = Item.find_by_user_id(params[:user_id]);
-    user = User.find_by_id(params[:user_id]);
+    item = Item.find_by_user_id(params[:user_id])
+    user = User.find_by_id(params[:user_id])
     admin = User.where(is_admin: true)[0]
+    sortedCharitiesIndex = gettingIndex(admin.votes)
+    charitiesById = sortedCharitiesIndex.collect {|i| Charity.find(i) }
     oldAdminBal = admin.current_roundup_balance
 
     if Transaction.where(item_id: item)
@@ -45,7 +48,30 @@ class Api::TransactionsController < PlaidController
       admin.save
       user.save
 
+
     end
+
+    charitiesById.each do |charity|
+      sortedGoals.push(charity.goals[0])
+    end
+    charitiesById.each do |charity|
+      sortedGoals.push(charity.goals[1])
+    end
+
+
+
+    sortedGoals.each do |goal|
+      if goal.completed === false
+        if goal.cost <= admin.current_roundup_balance
+          admin.current_roundup_balance = (admin.current_roundup_balance - goal.cost).round(2)
+          goal.completed = true
+          goal.save
+          admin.save
+        end
+      end
+    end
+
+
 
     @trans = Transaction.where(item_id: item)
 
@@ -55,6 +81,38 @@ class Api::TransactionsController < PlaidController
     }
 
 
+
+
+
   end
 
+  private
+
+  def gettingIndex(array)
+    sortedIndex = Array.new
+    sorted = array.sort {|x,y| -(x <=> y)}
+    sorted.each do |x|
+      sortedIndex.push(array.index(x))
+    end
+    return sortedIndex.map {|n| n + 1}
+  end
+
+
+  # def optSpending(charities, total)
+
+  #   charities.each do |char|
+  #     char.goals.each do |goal|
+  #       if goal.completed === false
+  #         if goal.cost <= total
+  #           total = total - goal.cost
+  #           goal.completed = true
+  #           goal.save
+  #         end
+  #       end
+  #     end
+  #   end
+
+  #   optSpending(charities, total)
+
+  # end
 end
