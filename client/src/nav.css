@@ -1,3 +1,45 @@
 .navbar {
   z-index: 2;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
 }
+
+.link {
+  text-decoration: none;
+}
+
+a:after, a:before {
+  transition: all .5s;
+}
+.navbar-nav > a.nav-link  > a {
+  color: #000;
+  position: relative;
+}
+
+.navbar-nav > a.nav-link > a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #000;
+  height: 2px;
+}
+
+.navbar-nav > a.nav-link > a:hover:after {
+  width: 100%;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+/*.navbar-nav > a.nav-link  > a:hover {
+  color: pink;
+}*/
+
