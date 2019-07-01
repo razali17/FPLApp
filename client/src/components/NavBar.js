@@ -3,6 +3,8 @@ import { Button, ButtonToolbar, Nav, NavDropdown, Navbar}  from 'react-bootstrap
 import { Redirect } from 'react-router';
 import {Link} from 'react-router-dom';
 import { HashLink as Links } from 'react-router-hash-link';
+import '../nav.css';
+import '../App.css'
 
 
 class NavBar extends Component {
