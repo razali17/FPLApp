@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../login.css'
-import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap/';
+import { Container, Row, Col, Image, Form, Button, ButtonToolbar } from 'react-bootstrap/';
+import {Link} from 'react-router-dom';
+import { HashLink as Links } from 'react-router-hash-link';
 
 
 class Login extends Component {
@@ -17,7 +19,7 @@ class Login extends Component {
           <Row className="loginform" id="loginform">
             <Form onSubmit={handleLogin}>
               <Form.Group controlId="formBasicEmail">
-                <Form.Control onChange = {handleChange} name="email" type="email" placeholder="Enter email" />
+                <Form.Control onChange = {handleChange} name="email" type="email" placeholder="Email" />
                 <Form.Text className="text-muted">
                 </Form.Text>
               </Form.Group>
@@ -27,6 +29,9 @@ class Login extends Component {
               <Button className="float-right loginbtn" variant="outline-dark" type="submit" pull-right>
                 Login
               </Button>
+              <br/>
+              <br/>
+              <p className="extra">Don't have an account? <a href="/register">Sign Up</a></p>
             </Form>
           </Row>
         </Container>

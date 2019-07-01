@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap/';
-import "../register.css"
+import "../register.css";
+import { ReCaptcha } from 'react-recaptcha-google';
 
 class Register extends Component {
   render() {
     const {
       handleInputChange: handleChange,
       handleRegister,
+      onLoadRecaptcha,
+      verifyCallback,
+      mainState: state,
     } = this.props;
 
     return (
@@ -36,9 +40,20 @@ class Register extends Component {
               <Form.Group controlId="formBasicPassword">
                 <Form.Control onChange = {handleChange} name="password_confirmation" type="password" placeholder="Confirm Password" />
               </Form.Group>
-              <Button className="float-right loginbtn" variant="outline-dark" type="submit" pull-right>
+              <Button className="float-right loginbtn" variant="outline-dark" type="submit" disabled={state.disabled} pull-right>
                 Register
               </Button>
+              <p className="extra1">Have an account? <a href="/login">Sign In</a></p>
+              <br/>
+              <ReCaptcha
+                ref={(el) => {this.captchaDemo = el;}}
+                size="normal"
+                render="explicit"
+                sitekey="6LcbmKsUAAAAANoBjdDOA7UYZCMoqVEeSD8aIgxT"
+                theme="light"
+                onloadCallback={onLoadRecaptcha}
+                verifyCallback={verifyCallback}
+              />
             </Form>
           </Row>
         </Container>

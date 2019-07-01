@@ -38,6 +38,10 @@ input#formBasicEmail.form-control::placeholder {
   ;
 }
 
+.extra {
+  color: white;
+}
+
 input#formBasicPassword.form-control {
   background: transparent;
   border: none;
