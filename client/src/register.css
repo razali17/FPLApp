@@ -72,3 +72,9 @@ input#formBasicPassword.form-control::placeholder {
 .div.form-check {
   display: flex;
 }
+
+.extra1 {
+  color: white;
+  padding-top: 0.5em;
+  padding-right: 6em;
+}

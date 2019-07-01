@@ -14,7 +14,7 @@ const HeroSection = props => (
         <Col className="hero-text">
           <div >
             <h1>Make a change, collectively</h1>
-            <p>Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt k </p>
+            <p> The bottom-up solution to making a meaningful impact in your community. </p>
           </div>
         </Col>
         <Col>

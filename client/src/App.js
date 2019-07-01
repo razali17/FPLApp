@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import PlaidLink from './components/PlaidLink';
+import { loadReCaptcha } from 'react-recaptcha-google'
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +34,8 @@ class App extends Component {
       habitatObj: [],
       parkObj: [],
       princessObj: [],
-      sickkidsObj: []
+      sickkidsObj: [],
+      disabled: true,
     }
   };
 
@@ -58,6 +60,7 @@ class App extends Component {
   }
 
  componentDidMount() {
+  loadReCaptcha();
   if (!this.state.charities) {
     axios.get('/api/charities', {withCredentials: true})
     .then((response) => {
@@ -91,6 +94,18 @@ class App extends Component {
 
     this.hydrateStateWithLocalStorage()
   }
+
+  onLoadRecaptcha = () => {
+    if (this.captchaDemo) {
+      this.captchaDemo.reset();
+    }
+  }
+  verifyCallback = (recaptchaToken) => {
+    // Here you will get the final recaptchaToken!!!
+    console.log(recaptchaToken, "<= your recaptcha token")
+    this.setState({ disabled: false })
+  }
+
 
   handleRegister = (e) =>  {
     e.preventDefault();
@@ -266,6 +281,8 @@ class App extends Component {
             onVoteChanged: this.onVoteChanged,
             getTransactions: this.getTransactions,
             displayObjectives: this.displayObjectives,
+            onLoadRecaptcha: this.onLoadRecaptcha,
+            verifyCallback: this.verifyCallback,
             ...routeProps
           }
           )}
