@@ -5,14 +5,20 @@ const style =  {
   color: 'black'
 }
 
-const printChars = (tests) => {
-  return tests.map( test =>
+const printChars = (charities) => {
+  return charities.map( charity =>
     <Carousel.Item>
-      <img className="d-block w-100" src={ test.image } alt="First slide" />
+    {console.log("charity", charity)}
+    {console.log("charity.objectives", charity.objectives)}
+      <img className="d-block w-100" src={ charity.image } alt={charity.name} />
       <Carousel.Caption>
-        <p style={style}>{test.desc}</p>
-        <p style={style}>{test.objective}</p>
-        {console.log("this is the objectives:", test.objective)}
+        <p style={style}>{charity.desc}</p>
+        <ul>
+          <li style={style}>{charity.objectives[0].objective}</li>
+          { charity.objectives[1] ? (
+          <li style={style}>{charity.objectives[1].objective}</li>
+          ):(null)}
+        </ul>
       </Carousel.Caption>
     </Carousel.Item>
   )
@@ -22,13 +28,15 @@ class Charity extends Component {
   render(){
     const {
       mainState: state,
+
     } = this.props
+
     return (
       <Container>
         <Row>
           <Col sm={6}>
             <Carousel>
-              {printChars(state.tests)}
+              {printChars(state.charities)}
             </Carousel>
           </Col>
         </Row>

@@ -32,13 +32,11 @@ class App extends Component {
       vote4:"",
       vote5:"",
       transactions: [],
-      goalObj: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: []
-      }
+      dailyObj: [],
+      habitatObj: [],
+      parkObj: [],
+      princessObj: [],
+      sickkidsObj: []
     }
   };
 
@@ -71,22 +69,33 @@ class App extends Component {
   // }
 
  componentDidMount() {
+  if (!this.state.charities) {
     axios.get('/api/charities', {withCredentials: true})
     .then((response) => {
       this.setState({
         charities: response.data.charities,
-        tests: response.data.tests
+        tests: response.data.tests,
+        dailyObj: response.data.dailyObj,
+        habitatObj: response.data.habitatObj,
+        parkObj: response.data.parkObj,
+        princessObj: response.data.princessObj,
+        sickkidsObj: response.data.sickkidsObj
       })
+        this.state.charities[0].objectives = this.state.dailyObj
+        this.state.charities[1].objectives = this.state.habitatObj
+        this.state.charities[2].objectives = this.state.parkObj
+        this.state.charities[3].objectives = this.state.princessObj
+        this.state.charities[4].objectives = this.state.sickkidsObj
       localStorage.setItem("charities", JSON.stringify(response.data.charities))
       localStorage.setItem("tests", JSON.stringify(response.data.tests))
     })
+  }
 
     axios.get('/api/goals', {withCredentials: true})
     .then((response) => {
       this.setState({
         goals: response.data.goals
       })
-      console.log(response.data)
       localStorage.setItem("goals", JSON.stringify(response.data.goals))
 
     })
@@ -194,6 +203,7 @@ class App extends Component {
       console.log("test", test)
       if (test.id in this.state.goalObj) {
         console.log("here")
+        this.state.goalObj[test.id].objectives.push(test.objective)
         this.state.goalObj[test.id].push(test.objective)
       }
     });
