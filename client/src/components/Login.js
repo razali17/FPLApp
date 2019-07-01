@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import loginImg from './login.svg'
+import '../login.css'
+import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap/';
+
 
 class Login extends Component {
   render() {
@@ -9,33 +11,24 @@ class Login extends Component {
     } = this.props;
 
     return (
-      <div>
-      {/*<NavBar mainState={this.props.mainState} />*/}
-      <div className="base.container">
-        <form onSubmit={handleLogin} >
-          <div className="header">Login</div>
-          <div className="content">
-            <div className="image">
-              <img src={loginImg} alt="" />
-            </div>
-            <div className="form">
-              <div className="form-group">
-                <label htmlFor="username">Email</label>
-                <input type="email" name="email" placeholder="email" onChange={handleChange}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" placeholder="password" onChange={handleChange}/>
-              </div>
-            </div>
-          </div>
-          <div className="footer">
-            <button type="submit" className="btn" >
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
+      <div className="background" id="background">
+        <Container fluid className="background" id="background">
+          <Row className="loginform" id="loginform">
+            <Form onSubmit={handleLogin}>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Text className="text-muted">
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
+              <Button className="float-right" variant="outline-dark" type="submit" pull-right>
+                Login
+              </Button>
+            </Form>
+          </Row>
+        </Container>
       </div>
     );
   }
