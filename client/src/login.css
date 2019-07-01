@@ -72,7 +72,3 @@ input#formBasicPassword.form-control::placeholder {
 .div.form-check {
   display: flex;
 }
-
-.form-check-label {
-  color: white;
-}
