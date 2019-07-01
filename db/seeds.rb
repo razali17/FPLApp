@@ -38,24 +38,10 @@ puts "Creating Charities..."
 Charity.destroy_all
 
 Charity.create!({
-  name: 'SickKids Hospital',
-  desc: 'Foundation dedicated to youth health research',
+  name: 'Daily Bread Foodbank',
+  desc: 'Foundation dedicated to supplying basic food necessities to low-income individuals',
   donated_balance: 0,
-  image: 'https://i.imgur.com/8mO4p7w.png'
-})
-
-Charity.create!({
-  name: 'Princess Margaret Foundation',
-  desc: 'Foundation dedicated to cancer research',
-  donated_balance: 0,
-  image: 'https://i.imgur.com/HGj2mrR.png'
-})
-
-Charity.create!({
-  name: 'Parkinson Canada',
-  desc: 'Foundation dedicated to Parkinson research',
-  donated_balance: 0,
-  image: 'https://i.imgur.com/KI4Xl6q.png'
+  image: 'https://i.imgur.com/7BkiXTN.png'
 })
 
 Charity.create!({
@@ -66,11 +52,27 @@ Charity.create!({
 })
 
 Charity.create!({
-  name: 'Daily Bread Foodbank',
-  desc: 'Foundation dedicated to supplying basic food necessities to low-income individuals',
+  name: 'Parkinson Canada',
+  desc: 'Foundation dedicated to Parkinson research',
   donated_balance: 0,
-  image: 'https://i.imgur.com/7BkiXTN.png'
+  image: 'https://i.imgur.com/KI4Xl6q.png'
 })
+
+Charity.create!({
+  name: 'Princess Margaret Foundation',
+  desc: 'Foundation dedicated to cancer research',
+  donated_balance: 0,
+  image: 'https://i.imgur.com/HGj2mrR.png'
+})
+
+
+Charity.create!({
+  name: 'SickKids Hospital',
+  desc: 'Foundation dedicated to youth health research',
+  donated_balance: 0,
+  image: 'https://i.imgur.com/8mO4p7w.png'
+})
+
 
 ##Goals (Testing goals so I only created 2 goals per)
 
@@ -89,7 +91,7 @@ Goal.destroy_all
 char1.goals.create!({
   objective: 'Build 3 MRI Scanners',
   desc: 'Building 3 additional MRI Scanners helps reduce the process of wait',
-  cost: 20000,
+  cost: 10000,
   completed: false
 })
 
@@ -103,7 +105,7 @@ char1.goals.create!({
 char2.goals.create!({
   objective: 'Cancer Research',
   desc: 'Hire more researchers to help speed of tests',
-  cost: 30000,
+  cost: 20000,
   completed: false
 })
 
@@ -146,6 +148,13 @@ char5.goals.create!({
   objective: 'More workers',
   desc: 'More workers can be allocated to get a wider scope of food gathering',
   cost: 20000,
+  completed: false
+})
+
+char5.goals.create!({
+  objective: 'More builders',
+  desc: 'More builders to produce houses faster!',
+  cost: 10000,
   completed: false
 })
 
