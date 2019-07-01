@@ -77,11 +77,11 @@ class Api::UsersController < ApplicationController
     a3 = admin_votes[2]
     a4 = admin_votes[3]
     a5 = admin_votes[4]
-    u1 = admin_votes[0]
-    u2 = admin_votes[1]
-    u3 = admin_votes[2]
-    u4 = admin_votes[3]
-    u5 = admin_votes[4]
+    u1 = user_votes[0]
+    u2 = user_votes[1]
+    u3 = user_votes[2]
+    u4 = user_votes[3]
+    u5 = user_votes[4]
     new_admin_votes = [a1+u1,a2+u2,a3+u3,a4+u4,a5+u5]
     puts "new admin votes"
     puts new_admin_votes

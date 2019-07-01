@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import loginImg from "./login.svg";
+import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap/';
+import "../register.css"
 
 class Register extends Component {
   render() {
@@ -10,43 +11,37 @@ class Register extends Component {
 
     return (
 
-        <div className="base-container" ref={this.props.containerRef}>
-        <form onSubmit={handleRegister} >
-          <div className="header">Register</div>
-          <div className="content">
-            <div className="image">
-              <img src={loginImg} alt="" />
-            </div>
-            <div className="form">
-              <div className="form-group">
-                <label htmlFor="username">First Name</label>
-                <input type="text" name="first_name" placeholder="first name" onChange={handleChange}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="username">Last Name</label>
-                <input type="text" name="last_name" placeholder="last name" onChange={handleChange}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="text" name="email" placeholder="email" onChange={handleChange}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" placeholder="password" onChange={handleChange}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Confirm Password</label>
-                <input type="password" name="password_confirmation" placeholder="confirm password" onChange={handleChange}/>
-              </div>
-            </div>
-            <div className="footer">
-              <button type="submit" className="btn">
+      <div className="background" id="background">
+        <Container fluid className="background" id="background">
+          <Row className="loginform" id="loginform">
+            <Form onSubmit={handleRegister}>
+            <Form.Group controlId="formBasicEmail">
+                <Form.Control type="text" placeholder="First Name" />
+                <Form.Text className="text-muted">
+                </Form.Text>
+              </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+                <Form.Control type="text" placeholder="Last Name" />
+                <Form.Text className="text-muted">
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Text className="text-muted">
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Control type="password" placeholder="Confirm Password" />
+              </Form.Group>
+              <Button className="float-right" variant="outline-dark" type="submit" pull-right>
                 Register
-              </button>
-            </div>
-
-        </div>
-      </form>
+              </Button>
+            </Form>
+          </Row>
+        </Container>
       </div>
     );
   }
