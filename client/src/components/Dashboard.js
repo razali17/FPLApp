@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Accordion from 'react-bootstrap/Accordion'
-import Table from 'react-bootstrap/Table'
-import Card from 'react-bootstrap/Card'
+import { Container, Row, Col, Accordion, Table, Card, Badge } from 'react-bootstrap';
 import ReactMinimalPieChart from 'react-minimal-pie-chart';
 import '../dashboard.css'
 import Login from './Login.js';
@@ -20,6 +15,17 @@ const charityList = (charities) => {
       <li>{charity.name}</li>
     </ul>
   )
+}
+
+const goalCompleted = (goals) => {
+  if (goals.completed === true) {
+    return goals.map( goal =>
+      <tr>
+        <td>{goal.objective}</td>
+        <td><Badge variant="success">Success</Badge></td>
+      </tr>
+    )
+  }
 }
 
 
@@ -74,6 +80,17 @@ class Dashboard extends Component {
             <Col>
               <p>Collective Achievements</p>
                 {charityList(state.charities)}
+                <Table striped bordered hover size="sm">
+                  <thead>
+                    <tr>
+                      <th>Goal Objective</th>
+                      <th>Completed</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {goalCompleted(state.goals)}
+                  </tbody>
+                </Table>
             </Col>
 
           </Row>
