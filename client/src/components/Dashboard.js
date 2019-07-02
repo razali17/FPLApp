@@ -33,11 +33,11 @@ class Dashboard extends Component {
       mainState: state,
     } = this.props
 
-    const v1 = state.user_votes[0]
-    const v2 = state.user_votes[1]
-    const v3 = state.user_votes[2]
-    const v4 = state.user_votes[3]
-    const v5 = state.user_votes[4]
+    const i1 = state.user_votes[0]
+    const i2 = state.user_votes[1]
+    const i3 = state.user_votes[2]
+    const i4 = state.user_votes[3]
+    const i5 = state.user_votes[4]
 
     const b1 = state.collective_votes[0]
     const b2 = state.collective_votes[1]
@@ -52,6 +52,14 @@ class Dashboard extends Component {
     const a3 = (b3/total) * 100
     const a4 = (b4/total) * 100
     const a5 = (b5/total) * 100
+
+    const itotal = i1+i2+i3+i4+i5
+
+    const v1 = (i1/itotal) * 100
+    const v2 = (i2/itotal) * 100
+    const v3 = (i3/itotal) * 100
+    const v4 = (i4/itotal) * 100
+    const v5 = (i5/itotal) * 100
 
     console.log(this.props.mainState.transactions)
     const trans = this.props.mainState.transactions
@@ -161,8 +169,7 @@ class Dashboard extends Component {
                 animate
                 onMouseOver={(event, data, dataIndex) => {
                   var node = document.getElementById('your_votes');
-                  node.innerHTML = "<p>"+data[dataIndex].title+": "+data[dataIndex].value+"</p>";
-
+                  node.innerHTML = "<p>"+data[dataIndex].title+": "+Math.round(data[dataIndex].value).toFixed(2)+"%</p>";
                 }}
                 label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].title):(null))}
                   labelStyle={{
@@ -194,12 +201,12 @@ class Dashboard extends Component {
                     {
                       title: 'Princess Margaret Foundation',
                       value: a4,
-                      color: '#F18701'
+                      color: '#9895F7'
                     },
                     {
                       title: 'Sick Kids',
                       value: a5,
-                      color: '#F35B04'
+                      color: '#F0ECFC'
                     }
                   ]}
                   lineWidth={15}
@@ -207,9 +214,9 @@ class Dashboard extends Component {
                   animate
                   onMouseOver={(event, data, dataIndex) => {
                   var node = document.getElementById('collective_votes');
-                    node.innerHTML = "<p>"+data[dataIndex].title+": "+data[dataIndex].value+"</p>";
+                    node.innerHTML = "<p>"+data[dataIndex].title+": "+Math.round(data[dataIndex].value).toFixed(2)+"%</p>";
                   }}
-                  label={({data, dataIndex}) => Math.round(data[dataIndex].value) + '% - ' + data[dataIndex].title}
+                  label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].title):(null))}
                     labelStyle={{
                       fontSize: '2px',
                     }}
