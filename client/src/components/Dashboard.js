@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Accordion from 'react-bootstrap/Accordion'
-import Table from 'react-bootstrap/Table'
-import Card from 'react-bootstrap/Card'
+import { Container, Row, Col, Accordion, Table, Card, Badge } from 'react-bootstrap';
 import ReactMinimalPieChart from 'react-minimal-pie-chart';
 import '../dashboard.css'
-import Login from './Login.js';
-import NavBar from './NavBar';
-import axios from 'axios';
-import { Redirect } from 'react-router';
-import { Switch } from 'react-router-dom';
 
 
-const charityList = (charities) => {
-  return charities.map(charity =>
-    <ul>
-      <li>{charity.name}</li>
-    </ul>
+// const charityList = (charities) => {
+//   return charities.map(charity =>
+//     <ul>
+//       <li>{charity.name}</li>
+//     </ul>
+//   )
+// }
+
+const goalCompleted = (goals) => {
+  return goals.map( goal =>
+    <tr>
+      <td>{goal.objective}</td>
+
+      <td>{ goal.completed === true ?<Badge variant="success">Success</Badge> :
+      null }</td>
+    </tr>
   )
 }
-
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -73,7 +73,18 @@ class Dashboard extends Component {
             </Col>
             <Col>
               <p>Collective Achievements</p>
-                {charityList(state.charities)}
+               {/* {charityList(state.charities)}*/}
+                <Table striped bordered hover size="sm">
+                  <thead>
+                    <tr>
+                      <th>Goal Objective</th>
+                      <th>Completed</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {goalCompleted(state.goals)}
+                  </tbody>
+                </Table>
             </Col>
 
           </Row>
