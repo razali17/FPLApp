@@ -97,22 +97,4 @@ class Api::TransactionsController < PlaidController
     return sortedIndex.map {|n| n + 1}
   end
 
-
-  # def optSpending(charities, total)
-
-  #   charities.each do |char|
-  #     char.goals.each do |goal|
-  #       if goal.completed === false
-  #         if goal.cost <= total
-  #           total = total - goal.cost
-  #           goal.completed = true
-  #           goal.save
-  #         end
-  #       end
-  #     end
-  #   end
-
-  #   optSpending(charities, total)
-
-  # end
 end
