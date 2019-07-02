@@ -1,6 +1,6 @@
 import React from 'react';
 import '../HeroSection.css';
-import { Container, Row, Col, Image } from 'react-bootstrap/';
+import { Container, Row, Col, Image, Card, CardDeck, Button } from 'react-bootstrap/';
 import {Link} from 'react-router-dom';
 
 
@@ -23,19 +23,45 @@ const HeroSection = props => (
       </Row>
       <Row className="blurb-text">
         <Col>
-          <p>Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt </p>
+          <p>"We can all do small things, with great love, and together we can do something wonderful." – Mother Teresa</p>
         </Col>
         <Col>
-          <p>Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt </p>
+          <p>"Alone we can do so little; together we can do so much." – Helen Keller </p>
         </Col>
       </Row>
       <Row className="home-why " id="home-why">
         <Col sm={10}>
           <h2>Why?</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco poriti laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in uienply voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat norin proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <p>Monthly giving from people like you is the most sustainable source of nonprofit funding in the world. It allows organizations to spend less time fundraising, think longer-term, and make a bigger impact.</p>
+          <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src="https://i.imgur.com/FVIulN9.png" />
+              <Card.Body>
+                <Card.Title>Automated Giving</Card.Title>
+                <Card.Text>
+                  Make donations simple and secure. Reduce the hassle of worrying about spare change.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src="https://i.imgur.com/LYKDlKA.jpg" />
+              <Card.Body>
+                <Card.Title>Meaningful Change</Card.Title>
+                <Card.Text>
+                  Help Canadian charities close to your heart accomplish real goals through a collective effort.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src="https://i.imgur.com/K3IVbW7.jpg" />
+              <Card.Body>
+                <Card.Title>Lower Tax</Card.Title>
+                <Card.Text>
+                  Report your charitable donations and claim your tax credits when you file your income tax return.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </CardDeck>
         </Col>
       </Row>
       <Row className="home-collective" id="home-collective">
@@ -46,8 +72,11 @@ const HeroSection = props => (
         </Col>
         <Col>
           <div>
-            <h2>The Collective</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco poriti laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in uienply voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat norin proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>How Does It Work?</h2>
+            <p>Allocate 5 votes to the nonprofits of your choice.</p>
+            <p>Based on your votes and the collective votes, our optimized algorithm creates a collective agenda, giving even minority populations a voice.</p>
+            <p>At the end of the month, your the collective change will combine to actualize real goals.
+            </p>
           </div>
         </Col>
       </Row>

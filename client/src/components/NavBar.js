@@ -19,7 +19,7 @@ class NavBar extends Component {
     return(
       <div>
       <Navbar collapseOnSelect expand="lg">
-        <Navbar.Brand href="#home">The Change Collective</Navbar.Brand>
+        <Navbar.Brand href="/">The Change Collective</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
