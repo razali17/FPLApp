@@ -3,15 +3,6 @@ import { Container, Row, Col, Accordion, Table, Card, Badge } from 'react-bootst
 import ReactMinimalPieChart from 'react-minimal-pie-chart';
 import '../dashboard.css'
 
-
-// const charityList = (charities) => {
-//   return charities.map(charity =>
-//     <ul>
-//       <li>{charity.name}</li>
-//     </ul>
-//   )
-// }
-
 const goalCompleted = (goals) => {
   return goals.map( goal =>
     <tr>
@@ -56,12 +47,9 @@ class Dashboard extends Component {
     console.log(this.props.mainState.transactions)
     const trans = this.props.mainState.transactions
     return(
-
       <div>
-        <Container>
-
-            <p pull-right> Hello, {state.first_name} </p>
-
+        <Container fluid>
+          <p pull-right> Hello, {state.first_name} </p>
           <Row>
             <Col>
               <p>Your Current Round Ups</p>
@@ -90,38 +78,38 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <div>
-                <Accordion defaultActiveKey="0">
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="0">
-                      Transactions
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="0">
-                      <Card.Body>
-                      <Table striped bordered hover size="sm">
-                        <thead>
-                          <tr>
-                            <th>Store Name</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Amount Rounded</th>
-                          </tr>
-                        </thead>
-                        {trans.length > 0 ?
-                        trans.map ( tran =>
-                        <tbody>
-                          <tr>
-                            <td>{tran.name}</td>
-                            <td>{tran.amount}</td>
-                            <td>{tran.date}</td>
-                            <td>{tran.roundup}</td>
-                          </tr>
-                        </tbody>) : null}
-                      </Table>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
-              </div>
+              <Accordion defaultActiveKey="0">
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                    Transactions
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                    <Table striped bordered hover size="sm">
+                      <thead>
+                        <tr>
+                          <th>Store Name</th>
+                          <th>Amount</th>
+                          <th>Date</th>
+                          <th>Amount Rounded</th>
+                        </tr>
+                      </thead>
+                      {trans.length > 0 ?
+                      trans.map ( tran =>
+                      <tbody>
+                        <tr>
+                          <td>{tran.name}</td>
+                          <td>{tran.amount}</td>
+                          <td>{tran.date}</td>
+                          <td>{tran.roundup}</td>
+                        </tr>
+                      </tbody>) : null}
+                    </Table>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
+            </div>
           </Row>
           <hr />
           <Row className="mt-5">
@@ -204,11 +192,9 @@ class Dashboard extends Component {
                     }}
                     labelPosition={60}
                 />
-            </Col>
-          </Row>
-
-        </Container>
-
+          </Col>
+        </Row>
+      </Container>
     </div>
     )
   }
