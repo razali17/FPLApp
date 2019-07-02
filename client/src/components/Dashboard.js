@@ -127,10 +127,11 @@ class Dashboard extends Component {
           <Row className="mt-5">
             <Col>
               <p>Your Votes</p>
-              <ReactMinimalPieChart
+              <h3 id="your_votes"></h3>
+              <ReactMinimalPieChart className="your_votes"
                 data={[
                   {
-                    title: 'Dail Food Bank',
+                    title: 'Daily Food Bank',
                     value: v1,
                     color: '#3D348B'
                   },
@@ -158,15 +159,21 @@ class Dashboard extends Component {
                 lineWidth={15}
                 rounded
                 animate
-                label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].value + " - " + data[dataIndex].title):(""))}
+                onMouseOver={(event, data, dataIndex) => {
+                  var node = document.getElementById('your_votes');
+                  node.innerHTML = "<p>"+data[dataIndex].title+": "+data[dataIndex].value+"</p>";
+
+                }}
+                label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].title):(null))}
                   labelStyle={{
-                    fontSize: '2px',
+                    fontSize: '3px',
                   }}
                   labelPosition={60}
               />
             </Col>
             <Col>
               <p>Collective Votes</p>
+              <h3 id="collective_votes"></h3>
                 <ReactMinimalPieChart
                   data={[
                     {
@@ -198,6 +205,10 @@ class Dashboard extends Component {
                   lineWidth={15}
                   rounded
                   animate
+                  onMouseOver={(event, data, dataIndex) => {
+                  var node = document.getElementById('collective_votes');
+                    node.innerHTML = "<p>"+data[dataIndex].title+": "+data[dataIndex].value+"</p>";
+                  }}
                   label={({data, dataIndex}) => Math.round(data[dataIndex].value) + '% - ' + data[dataIndex].title}
                     labelStyle={{
                       fontSize: '2px',
