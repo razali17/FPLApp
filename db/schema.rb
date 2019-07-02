@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_161339) do
+ActiveRecord::Schema.define(version: 2019_07_02_195432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_161339) do
     t.float "current_roundup_balance"
     t.datetime "balance_date"
     t.integer "votes", default: [0, 0, 0, 0, 0], array: true
+    t.float "total_balance"
   end
 
   add_foreign_key "donations", "charities"

@@ -31,15 +31,11 @@ class NavBar extends Component {
             <Nav.Link><Links to="/#home-charities">Charities</Links></Nav.Link>
             {state.isLoggedIn ? (
             <ButtonToolbar>
-            <form onSubmit={this.props.getTransactions} >
-              <Button className='mr-1' variant="outline-dark">Transactions</Button>
-            </form>
+
             <form onSubmit={handleLogout} >
               <Button type="submit" className='mr-1' variant="outline-dark">Logout</Button>
             </form>
-            <form onSubmit={handleVoteSelection} >
-              <Button type="submit" className='mr-1' variant="outline-dark">Votes</Button>
-            </form>
+
             <Button className='mr-1' variant="outline-dark">Settings</Button>
             <Button className='mr-1' variant="outline-dark"><Link to="/dashboard">Dashboard</Link></Button>
           </ButtonToolbar>

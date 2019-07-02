@@ -21,6 +21,7 @@ class App extends Component {
       user_votes: [0,0,0,0,0],
       collective_votes: [0,0,0,0,0],
       collective_roundup_balance: 0,
+      total_balance: 0,
       charities: [],
       goals: [],
       tests: [],
@@ -36,6 +37,7 @@ class App extends Component {
       princessObj: [],
       sickkidsObj: [],
       disabled: true,
+      plaidConnected: false,
     }
   };
 
@@ -200,6 +202,7 @@ class App extends Component {
 
   handleVoteSelection = (e) => {
     e.preventDefault();
+
     let v1 = Number(this.state.vote1)
     let v2 = Number(this.state.vote2)
     let v3 = Number(this.state.vote3)
@@ -235,6 +238,7 @@ class App extends Component {
       window.location = "/dashboard"
     })
 
+
   }
 
   onVoteChanged = (e) => {
@@ -252,9 +256,11 @@ class App extends Component {
     .then(response => {
       console.log(response.data)
       this.setState({
-        transactions: response.data.transaction
+        transactions: response.data.transaction,
+        total_balance: response.data.total_balance
       })
       localStorage.setItem("transactions", JSON.stringify(response.data.transaction))
+      localStorage.setItem("total_balance", JSON.stringify(response.data.total_balance))
     })
   }
 
@@ -283,6 +289,8 @@ class App extends Component {
             displayObjectives: this.displayObjectives,
             onLoadRecaptcha: this.onLoadRecaptcha,
             verifyCallback: this.verifyCallback,
+            handleOnSuccess: this.handleOnSuccess,
+            handleOnExit: this.handleOnExit,
             ...routeProps
           }
           )}
@@ -303,6 +311,9 @@ class App extends Component {
     }
     })
     .then(res => {
+      this.setState({
+        plaidConnected: true
+      })
       console.log(res.data)
     })
   }

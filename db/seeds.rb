@@ -29,6 +29,7 @@ User.create!({
  password: 'test',
  is_admin: true,
  current_roundup_balance: 20020.35,
+ total_balance: 20020.35,
  votes: [35,62,11,36,101]
 })
 
