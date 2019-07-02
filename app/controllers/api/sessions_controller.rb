@@ -22,11 +22,15 @@ class Api::SessionsController < ApplicationController
     if session[:user_id]
       flag = true
       currentUser = User.find_by_id(session[:user_id])
+      currentItem = Item.find_by_user_id(currentUser.id)
+      transactions = Transaction.where(item_id: currentItem.id)
     end
     render :json => {
       isLoggedIn: flag,
       currentUser: currentUser,
-      admin: @admin}
+      admin: @admin,
+      transactions: transactions,
+    }
   end
 
 

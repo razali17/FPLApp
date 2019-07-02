@@ -173,7 +173,7 @@ class Dashboard extends Component {
                 }}
                 label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].title):(null))}
                   labelStyle={{
-                    fontSize: '3px',
+                    fontSize: '2.25px',
                   }}
                   labelPosition={60}
               />

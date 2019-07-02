@@ -182,7 +182,8 @@ class App extends Component {
         current_roundup_balance: response.data.currentUser.current_roundup_balance,
         user_votes: response.data.currentUser.votes,
         collective_votes: response.data.admin.votes,
-        collective_roundup_balance: response.data.admin.current_roundup_balance,
+        total_balance: response.data.admin.total_balance,
+        transactions: response.data.transactions
       })
       localStorage.setItem("current_roundup_balance", response.data.current_roundup_balance)
       localStorage.setItem("user_votes", response.data.user_votes)
