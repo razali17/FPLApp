@@ -78,8 +78,8 @@ class App extends Component {
         this.state.charities[2].objectives = this.state.parkObj
         this.state.charities[3].objectives = this.state.princessObj
         this.state.charities[4].objectives = this.state.sickkidsObj
-      localStorage.setItem("charities", JSON.stringify(response.data.charities))
-      localStorage.setItem("tests", JSON.stringify(response.data.tests))
+        localStorage.setItem("charities", JSON.stringify(response.data.charities))
+        localStorage.setItem("tests", JSON.stringify(response.data.tests))
     })
   }
 
@@ -323,7 +323,7 @@ class App extends Component {
     return (
       <div className="App">
         {Children.map(children, this.withRoute)}
-        <PlaidLink
+        {/*<PlaidLink
           clientName="Change Collective"
           env="development"
           countryCodes={['CA']}
@@ -332,7 +332,7 @@ class App extends Component {
           onExit={this.handleOnExit}
           onSuccess={this.handleOnSuccess}>
           Open Link and connect your bank!
-        </PlaidLink>
+        </PlaidLink>*/}
 
       </div>
     );
