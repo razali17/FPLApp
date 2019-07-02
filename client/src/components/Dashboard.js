@@ -75,7 +75,7 @@ class Dashboard extends Component {
               <p>Your Current Round Ups</p>
               <div className="roundup-bg">
                 <p>${state.current_roundup_balance}</p>
-                <p>${state.collective_roundup_balance}</p>
+                <p>${state.total_balance}</p>
               </div>
 
             </Col>

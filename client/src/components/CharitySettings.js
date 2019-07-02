@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
 import {Form, FormCheck, Container, Row, Col} from 'react-bootstrap';
+import PlaidLink from './PlaidLink';
 import  '../charitysettings.css'
 
 
 class Charity extends Component {
+
   render(){
     const {
       mainState: state,
       onVoteChanged,
+      handleOnExit,
+      handleOnSuccess,
+      handleVoteSelection,
+      getTransactions,
     } = this.props
 
     return (
       <Container fluid className="votes">
+      { !state.plaidConnected ? (
+      <Row>
+       <PlaidLink
+          clientName="Change Collective"
+          env="development"
+          countryCodes={['CA']}
+          product={["auth", "transactions"]}
+          publicKey="2ae89ce59b9f812475f71e0d9aba50"
+          onExit={handleOnExit}
+          onSuccess={handleOnSuccess}>
+          Open Link and connect your bank!
+        </PlaidLink>
+      </Row> ):(
         <Form>
+        {state.transactions.length === 0 ? (
         <div>
           <Row>
             {['radio'].map(type => (
@@ -77,10 +97,21 @@ class Charity extends Component {
                    <Form.Check inline label="Princess" type={type} id={`inline-${type}-5`} value="3" name="vote5" onChange={onVoteChanged}/>
                   <Form.Check inline label="Sick kids" type={type} id={`inline-${type}-5`} value="4" name="vote5" onChange={onVoteChanged}/>
               </div>
-            ))}
+              ))}
           </Row>
+        <form onSubmit={getTransactions} >
+          <button className='mr-1' variant="outline-dark">Submit Vote</button>
+        </form>
           </div>
+          ):(
+            <h5>Your votes are now saved</h5>
+            )}
+        <form onSubmit={handleVoteSelection} >
+          <button type="submit" className='mr-1' variant="outline-dark">Proceed to Dashboard</button>
+        </form>
         </Form>
+
+      )}
       </Container>
     )
   }

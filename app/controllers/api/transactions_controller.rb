@@ -9,6 +9,7 @@ class Api::TransactionsController < PlaidController
     charitiesById = sortedCharitiesIndex.collect {|i| Charity.find(i) }
     oldAdminBal = admin.current_roundup_balance
 
+
     if Transaction.where(item_id: item)
 
       Transaction.where(item_id: item).destroy_all
@@ -45,8 +46,10 @@ class Api::TransactionsController < PlaidController
 
       user.current_roundup_balance = roundup
       admin.current_roundup_balance = oldAdminBal + roundup
+      admin.total_balance = admin.total_balance + roundup
       admin.save
       user.save
+      @total_balance = admin.total_balance
 
 
     end
@@ -71,13 +74,14 @@ class Api::TransactionsController < PlaidController
       end
     end
 
+    byebug;
 
 
     @trans = Transaction.where(item_id: item)
-
     render :json => {
       transaction: @trans,
-      roundup: roundup
+      roundup: roundup,
+      total_balance: @total_balance,
     }
 
 
@@ -97,22 +101,4 @@ class Api::TransactionsController < PlaidController
     return sortedIndex.map {|n| n + 1}
   end
 
-
-  # def optSpending(charities, total)
-
-  #   charities.each do |char|
-  #     char.goals.each do |goal|
-  #       if goal.completed === false
-  #         if goal.cost <= total
-  #           total = total - goal.cost
-  #           goal.completed = true
-  #           goal.save
-  #         end
-  #       end
-  #     end
-  #   end
-
-  #   optSpending(charities, total)
-
-  # end
 end
