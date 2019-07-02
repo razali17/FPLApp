@@ -4,7 +4,7 @@ import { Redirect } from 'react-router';
 import {Link} from 'react-router-dom';
 import { HashLink as Links } from 'react-router-hash-link';
 import '../nav.css';
-import '../App.css'
+import '../App.css';
 
 
 class NavBar extends Component {
@@ -31,8 +31,8 @@ class NavBar extends Component {
             <Nav.Link><Links to="/#home-charities">Charities</Links></Nav.Link>
             {state.isLoggedIn ? (
             <ButtonToolbar>
-            <form onSubmit={getTransactions} >
-              <button className='mr-1' variant="outline-dark">Transactions</button>
+            <form onSubmit={this.props.getTransactions} >
+              <Button className='mr-1' variant="outline-dark">Transactions</Button>
             </form>
             <form onSubmit={handleLogout} >
               <Button type="submit" className='mr-1' variant="outline-dark">Logout</Button>
