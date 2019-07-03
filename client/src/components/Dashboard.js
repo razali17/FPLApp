@@ -68,7 +68,7 @@ class Dashboard extends Component {
       <div>
         <Container>
 
-            <p pull-right> Hello, {state.first_name} </p>
+            <p className="float-left" > Hello, {state.first_name} </p>
 
           <Row>
             <Col>
@@ -81,7 +81,6 @@ class Dashboard extends Component {
             </Col>
             <Col>
               <p>Collective Achievements</p>
-               {/* {charityList(state.charities)}*/}
                 <Table striped bordered hover size="sm">
                   <thead>
                     <tr>
@@ -98,10 +97,10 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <div>
-                <Accordion defaultActiveKey="0">
+                <Accordion>
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
-                      Transactions
+                      Transactions <span className="float-right">U+02193</span>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
