@@ -27,3 +27,17 @@ NOTE: You need at least Ruby~ 2.6.2 in order to run bundle. Please update your R
 ![View Your Round-ups](https://i.imgur.com/4HPMQZb.png)
 ![Goals Completed With Collective Funds](https://i.imgur.com/1lBsNQV.png)
 ![Your/Collective Vote Results](https://i.imgur.com/e511NZF.png)
+
+## Future Implementations
+
+Short-term stretches:
+-Implement more charity options
+-Allow users to edit their profile options such as select their round-up denominations(closest dime, dollar etc. )
+-Using ActionMailer to send confirmation emails to users
+-Refactor codes to make it more dry
+
+Long-term stretches:
+-Implement live support chat using WebSockets
+-Connect with STRIPE to implement actual payment towards charities
+-Allow multiple accounts per user through Plaid
+
