@@ -3,7 +3,6 @@ import '../HeroSection.css';
 import { Container, Row, Col, Image, Card, CardDeck, Button } from 'react-bootstrap/';
 import {Link} from 'react-router-dom';
 
-
 const HeroSection = props => (
   <div className='App'>
     <Container fluid className="hero-section">
