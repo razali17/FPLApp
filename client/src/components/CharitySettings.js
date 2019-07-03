@@ -40,10 +40,10 @@ class Charity extends Component {
                   <label className="voteSection"> Vote 1 </label> <br />
                      <Form.Check inline label="Daily Food Bank" type={type}
                       id={`inline-${type}-5`}  value="0" name="vote1" onChange={onVoteChanged}/>
-                     <Form.Check inline label="Habitat" type={type} id={`inline-${type}-5`} value="1" name="vote1" onChange={onVoteChanged}/>
-                     <Form.Check inline label="Parkinson" type={type} id={`inline-${type}-5`} value="2" name="vote1" onChange={onVoteChanged}/>
-                     <Form.Check inline label="Princess" type={type} id={`inline-${type}-5`} value="3" name="vote1" onChange={onVoteChanged}/>
-                    <Form.Check inline label="Sick kids" type={type} id={`inline-${type}-5`} value="4" name="vote1" onChange={onVoteChanged}/>
+                     <Form.Check inline label="Habitat for Humanity" type={type} id={`inline-${type}-5`} value="1" name="vote1" onChange={onVoteChanged}/>
+                     <Form.Check inline label="Parkinson Canada" type={type} id={`inline-${type}-5`} value="2" name="vote1" onChange={onVoteChanged}/>
+                     <Form.Check inline label="Princess Margaret Hospital" type={type} id={`inline-${type}-5`} value="3" name="vote1" onChange={onVoteChanged}/>
+                    <Form.Check inline label="SickKids Hospital" type={type} id={`inline-${type}-5`} value="4" name="vote1" onChange={onVoteChanged}/>
                 </div>
               ))}
           </Row>
@@ -53,10 +53,10 @@ class Charity extends Component {
                 <label className="voteSection"> Vote 2 </label> <br />
                    <Form.Check inline label="Daily Food Bank" type={type}
                     id={`inline-${type}-5`} value="0" name="vote2" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Habitat" type={type} id={`inline-${type}-5`} value="1" name="vote2" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Parkinson" type={type} id={`inline-${type}-5`} value="2" name="vote2" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Princess" type={type} id={`inline-${type}-5`} value="3" name="vote2" onChange={onVoteChanged}/>
-                  <Form.Check inline label="Sick kids" type={type} id={`inline-${type}-5`} value="4" name="vote2" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Habitat for Humanity" type={type} id={`inline-${type}-5`} value="1" name="vote2" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Parkinson Canada" type={type} id={`inline-${type}-5`} value="2" name="vote2" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Princess Margaret Hospital" type={type} id={`inline-${type}-5`} value="3" name="vote2" onChange={onVoteChanged}/>
+                  <Form.Check inline label="SickKids Hospital" type={type} id={`inline-${type}-5`} value="4" name="vote2" onChange={onVoteChanged}/>
               </div>
             ))}
           </Row>
@@ -66,10 +66,10 @@ class Charity extends Component {
                 <label className="voteSection"> Vote 3 </label> <br />
                    <Form.Check inline label="Daily Food Bank" type={type}
                     id={`inline-${type}-5`} value="0" name="vote3" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Habitat" type={type} id={`inline-${type}-5`} value="1" name="vote3" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Parkinson" type={type} id={`inline-${type}-5`} value="2" name="vote3" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Princess" type={type} id={`inline-${type}-5`} value="3" name="vote3" onChange={onVoteChanged}/>
-                  <Form.Check inline label="Sick kids" type={type} id={`inline-${type}-5`} value="4" name="vote3" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Habitat for Humanity" type={type} id={`inline-${type}-5`} value="1" name="vote3" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Parkinson Canada" type={type} id={`inline-${type}-5`} value="2" name="vote3" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Princess Margaret Hospital" type={type} id={`inline-${type}-5`} value="3" name="vote3" onChange={onVoteChanged}/>
+                  <Form.Check inline label="SickKids Hospital" type={type} id={`inline-${type}-5`} value="4" name="vote3" onChange={onVoteChanged}/>
               </div>
             ))}
           </Row>
@@ -79,10 +79,10 @@ class Charity extends Component {
                 <label className="voteSection"> Vote 4 </label> <br />
                    <Form.Check inline label="Daily Food Bank" type={type}
                     id={`inline-${type}-5`} value="0" name="vote4" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Habitat" type={type} id={`inline-${type}-5`} value="1" name="vote4" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Parkinson" type={type} id={`inline-${type}-5`} value="2" name="vote4" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Princess" type={type} id={`inline-${type}-5`} value="3" name="vote4" onChange={onVoteChanged}/>
-                  <Form.Check inline label="Sick kids" type={type} id={`inline-${type}-5`} value="4" name="vote4" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Habitat for Humanity" type={type} id={`inline-${type}-5`} value="1" name="vote4" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Parkinson Canada" type={type} id={`inline-${type}-5`} value="2" name="vote4" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Princess Margaret Hospital" type={type} id={`inline-${type}-5`} value="3" name="vote4" onChange={onVoteChanged}/>
+                  <Form.Check inline label="SickKids Hospital" type={type} id={`inline-${type}-5`} value="4" name="vote4" onChange={onVoteChanged}/>
               </div>
             ))}
           </Row>
@@ -92,10 +92,10 @@ class Charity extends Component {
                 <label className="voteSection"> Vote 5 </label> <br />
                    <Form.Check inline label="Daily Food Bank" type={type}
                     id={`inline-${type}-5`} value="0" name="vote5" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Habitat" type={type} id={`inline-${type}-5`} value="1" name="vote5" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Parkinson" type={type} id={`inline-${type}-5`} value="2" name="vote5" onChange={onVoteChanged}/>
-                   <Form.Check inline label="Princess" type={type} id={`inline-${type}-5`} value="3" name="vote5" onChange={onVoteChanged}/>
-                  <Form.Check inline label="Sick kids" type={type} id={`inline-${type}-5`} value="4" name="vote5" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Habitat for Humanity" type={type} id={`inline-${type}-5`} value="1" name="vote5" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Parkinson Canada" type={type} id={`inline-${type}-5`} value="2" name="vote5" onChange={onVoteChanged}/>
+                   <Form.Check inline label="Princess Margaret Hospital" type={type} id={`inline-${type}-5`} value="3" name="vote5" onChange={onVoteChanged}/>
+                  <Form.Check inline label="SickKids Hospital" type={type} id={`inline-${type}-5`} value="4" name="vote5" onChange={onVoteChanged}/>
               </div>
               ))}
           </Row>
