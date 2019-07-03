@@ -50,28 +50,12 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    # puts "hello1"
     admin = User.where(is_admin: true)[0]
     user = User.find_by_id(session[:user_id])
-    puts "user votes"
-    puts user.votes
     old_user_votes = user.votes
     admin_votes = admin.votes
-    # admin_votes.each do |num|
-    #   num -=
-    puts "next"
-    puts admin_votes.class
     new_admin_votes = admin_votes.zip(old_user_votes).map{|pair| pair.reduce(&:-)}
-    puts user_params
     user_votes = user_params[:votes]
-    puts "new admin votes"
-    puts admin_votes
-    puts "user_votes"
-    puts user_votes
-    puts user_votes.class
-    puts "new user votes"
-    # new_user_votes = user_votes.tr('["]', '').split(',').map(&:to_i)
-    # new_admin_votes = new_admin_votes.zip(user_votes).map{|pair| pair.reduce(&:+)}
     a1 = admin_votes[0]
     a2 = admin_votes[1]
     a3 = admin_votes[2]
@@ -83,8 +67,6 @@ class Api::UsersController < ApplicationController
     u4 = user_votes[3]
     u5 = user_votes[4]
     new_admin_votes = [a1+u1,a2+u2,a3+u3,a4+u4,a5+u5]
-    puts "new admin votes"
-    puts new_admin_votes
     user.update_attributes(user_params)
     admin.votes = new_admin_votes
     admin.save

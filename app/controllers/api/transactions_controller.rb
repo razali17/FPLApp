@@ -74,9 +74,6 @@ class Api::TransactionsController < PlaidController
       end
     end
 
-    byebug;
-
-
     @trans = Transaction.where(item_id: item)
     render :json => {
       transaction: @trans,
