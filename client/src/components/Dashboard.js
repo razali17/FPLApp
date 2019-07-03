@@ -55,22 +55,19 @@ class Dashboard extends Component {
     console.log(this.props.mainState.transactions)
     const trans = this.props.mainState.transactions
     return(
-      <div>
-        <Container fluid>
-          <p pull-right> Hello, {state.first_name} </p>
+        <Container fluid style={{ padding: '2%' }}>
+          <h3 style={{ textAlign: 'left', textTransform: 'none' }}> Hello, {state.first_name} </h3>
           <Row>
             <Col>
-              <p>Your Current Round Ups</p>
+              <h4>Your Current Round Ups</h4>
               <div className="roundup-bg">
                 <p>${state.current_roundup_balance}</p>
                 <p>${state.total_balance}</p>
               </div>
-
             </Col>
             <Col>
-              <p>Collective Achievements</p>
-               {/* {charityList(state.charities)}*/}
-                <Table striped bordered hover size="sm">
+              <h4>Collective Achievements</h4>
+                <Table hover borderd size="sm">
                   <thead>
                     <tr>
                       <th>Goal Objective</th>
@@ -82,18 +79,17 @@ class Dashboard extends Component {
                   </tbody>
                 </Table>
             </Col>
-
           </Row>
           <Row>
-            <div>
-              <Accordion defaultActiveKey="0">
+            <Col>
+              <Accordion>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
-                    Transactions
+                    <h4 style={{ textAlign: 'left' }} >Transactions <span className="float-right">↓</span></h4>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
-                    <Table striped bordered hover size="sm">
+                    <Table striped bordered hover>
                       <thead>
                         <tr>
                           <th>Store Name</th>
@@ -117,13 +113,15 @@ class Dashboard extends Component {
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
-            </div>
+            </Col>
           </Row>
+          <br />
           <hr />
+          <br />
           <Row className="mt-5">
             <Col>
-              <p>Your Votes</p>
-              <h3 id="your_votes"></h3>
+              <h4>Your Votes</h4>
+              <p id="your_votes"></p>
               <ReactMinimalPieChart className="your_votes"
                 data={[
                   {
@@ -167,8 +165,8 @@ class Dashboard extends Component {
               />
             </Col>
             <Col>
-              <p>Collective Votes</p>
-              <h3 id="collective_votes"></h3>
+              <h4>Collective Votes</h4>
+              <p id="collective_votes"></p>
                 <ReactMinimalPieChart
                   data={[
                     {
@@ -213,7 +211,7 @@ class Dashboard extends Component {
           </Col>
         </Row>
       </Container>
-    </div>
+
     )
   }
 }
