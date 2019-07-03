@@ -17,7 +17,7 @@ const HeroSection = props => (
           </div>
         </Col>
         <Col>
-          <img src={'https://i.imgur.com/kwB8nDe.png'} alt="" />
+          <img src={'https://i.imgur.com/HXC88EE.png'} alt="Donate" />
         </Col>
       </Row>
       <Row className="blurb-text">
@@ -32,9 +32,11 @@ const HeroSection = props => (
         <Col sm={10}>
           <h2>Why?</h2>
           <p>Monthly giving from people like you is the most sustainable source of nonprofit funding in the world. It allows organizations to spend less time fundraising, think longer-term, and make a bigger impact.</p>
-          <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src="https://i.imgur.com/FVIulN9.png" />
+        </Col>
+        <Row>
+         <CardDeck style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', textAlign: 'center'}}>
+            <Card style={{ width: '20rem', border: 'none' }}>
+              <Card.Img variant="top" src="https://i.imgur.com/RgqDTH0.png" />
               <Card.Body>
                 <Card.Title>Automated Giving</Card.Title>
                 <Card.Text>
@@ -42,8 +44,8 @@ const HeroSection = props => (
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src="https://i.imgur.com/LYKDlKA.jpg" />
+            <Card style={{ width: '20rem', border: 'none'  }}>
+              <Card.Img variant="top" src="https://i.imgur.com/hm3SWQH.png" />
               <Card.Body>
                 <Card.Title>Meaningful Change</Card.Title>
                 <Card.Text>
@@ -51,8 +53,8 @@ const HeroSection = props => (
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src="https://i.imgur.com/K3IVbW7.jpg" />
+            <Card style={{ width: '20rem', border: 'none'  }}>
+              <Card.Img variant="top" src="https://i.imgur.com/o4GV42I.png" />
               <Card.Body>
                 <Card.Title>Lower Tax</Card.Title>
                 <Card.Text>
@@ -61,12 +63,14 @@ const HeroSection = props => (
               </Card.Body>
             </Card>
           </CardDeck>
-        </Col>
+
       </Row>
+      </Row>
+
       <Row className="home-collective" id="home-collective">
         <Col>
           <div>
-            <img src={'https://i.imgur.com/lQozyZl.png'} alt="Donate" className="collective-img"/>
+            <img src={'https://i.imgur.com/UHh46T9.png'} alt="Donate" className="collective-img"/>
           </div>
         </Col>
         <Col>
@@ -83,18 +87,43 @@ const HeroSection = props => (
 
         <Col>
           <Image src={'https://i.imgur.com/PdnVWGx.png'} alt="Habitat for Humanity. Habitat pour l'humanité. Canada"  />
+          <ul>
+            <strong>Goals</strong>
+            <li>Goal 1 </li>
+            <li>Goal 2 </li>
+          </ul>
         </Col>
         <Col>
           <Image src={'https://i.imgur.com/7BkiXTN.png'}  alt="Habitat for Humanity. Habitat pour l'humanité. Canada" />
+          <ul>
+            <strong>Goals</strong>
+            <li>Goal 1 </li>
+            <li>Goal 2 </li>
+          </ul>
         </Col>
         <Col>
           <Image src={'https://i.imgur.com/HGj2mrR.png'}  alt="Habitat for Humanity. Habitat pour l'humanité. Canada" />
+          <ul>
+            <strong>Goals</strong>
+            <li>Goal 1 </li>
+            <li>Goal 2 </li>
+          </ul>
         </Col>
         <Col>
           <Image src={'https://i.imgur.com/8mO4p7w.png'}  alt="Habitat for Humanity. Habitat pour l'humanité. Canada" />
+          <ul>
+            <strong>Goals</strong>
+            <li>Goal 1 </li>
+            <li>Goal 2 </li>
+          </ul>
         </Col>
         <Col>
           <Image src={'https://i.imgur.com/KI4Xl6q.png'} alt="Habitat for Humanity. Habitat pour l'humanité. Canada"  />
+          <ul>
+            <strong>Goals</strong>
+            <li>Goal 1 </li>
+            <li>Goal 2 </li>
+          </ul>
         </Col>
       </Row>
     </Container>
