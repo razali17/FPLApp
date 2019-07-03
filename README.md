@@ -36,7 +36,7 @@ Short-term stretches:\
 -Using ActionMailer to send confirmation emails to users\
 -Refactor codes to make it more dry
 
-Long-term stretches:
+Long-term stretches:\
 -Implement live support chat using WebSockets\
 -Connect with STRIPE to implement actual payment towards charities\
 -Allow multiple accounts per user through Plaid
