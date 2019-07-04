@@ -7,7 +7,7 @@ const goalCompleted = (goals) => {
   return goals.map( goal =>
     <tr>
       <td>{goal.objective}</td>
-
+      <td>{goal.cost}</td>
       <td>{ goal.completed === true ?<Badge variant="success">Success</Badge> :
       null }</td>
     </tr>
@@ -59,9 +59,12 @@ class Dashboard extends Component {
           <h3 style={{ textAlign: 'left', textTransform: 'none' }}> Hello, {state.first_name} </h3>
           <Row>
             <Col>
-              <h4>Your Current Round Ups</h4>
               <div className="roundup-bg">
+              <br />
+                <h6>Your Current Round Ups</h6>
                 <p>${state.current_roundup_balance}</p>
+                <br/>
+              <h6>Collective Balance</h6>
                 <p>${state.total_balance}</p>
               </div>
             </Col>
@@ -71,6 +74,7 @@ class Dashboard extends Component {
                   <thead>
                     <tr>
                       <th>Goal Objective</th>
+                      <th>Cost</th>
                       <th>Completed</th>
                     </tr>
                   </thead>
@@ -89,7 +93,7 @@ class Dashboard extends Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
-                    <Table striped bordered hover>
+                    <Table striped bordered hover >
                       <thead>
                         <tr>
                           <th>Store Name</th>
@@ -122,7 +126,7 @@ class Dashboard extends Component {
             <Col>
               <h4>Your Votes</h4>
               <p id="your_votes"></p>
-              <ReactMinimalPieChart className="your_votes"
+              <ReactMinimalPieChart className="your_votes chartSize"
                 data={[
                   {
                     title: 'Daily Food Bank',
@@ -140,7 +144,7 @@ class Dashboard extends Component {
                     color: '#9895F7'
                   },
                   {
-                    title: 'Princess Margaret Foundation',
+                    title: 'Princess Margaret Hospital',
                     value: v4,
                     color: '#F18701'
                   },
@@ -167,7 +171,7 @@ class Dashboard extends Component {
             <Col>
               <h4>Collective Votes</h4>
               <p id="collective_votes"></p>
-                <ReactMinimalPieChart
+                <ReactMinimalPieChart className="chartSize"
                   data={[
                     {
                       title: 'Daily Food Bank',
@@ -185,14 +189,14 @@ class Dashboard extends Component {
                       color: '#9895F7'
                     },
                     {
-                      title: 'Princess Margaret Foundation',
+                      title: 'Princess Margaret Hospital',
                       value: a4,
-                      color: '#9895F7'
+                      color: '#F18701'
                     },
                     {
                       title: 'Sick Kids',
                       value: a5,
-                      color: '#F0ECFC'
+                      color: '#F35B04'
                     }
                   ]}
                   lineWidth={15}
@@ -204,7 +208,7 @@ class Dashboard extends Component {
                   }}
                   label={({data, dataIndex}) => (data[dataIndex].value ? (data[dataIndex].title):(null))}
                     labelStyle={{
-                      fontSize: '2px',
+                      fontSize: '2.25px',
                     }}
                     labelPosition={60}
                 />

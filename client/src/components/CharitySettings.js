@@ -104,11 +104,11 @@ class Charity extends Component {
         </form>
           </div>
           ):(
-            <h5>Your votes are now saved</h5>
-            )}
         <form onSubmit={handleVoteSelection} >
+            <h5>Your votes are now saved</h5>
           <button type="submit" className='mr-1' variant="outline-dark">Proceed to Dashboard</button>
         </form>
+            )}
         </Form>
 
       )}
