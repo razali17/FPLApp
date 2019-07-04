@@ -19,7 +19,7 @@ class Charity extends Component {
     return (
       <Container fluid className="votes">
       { !state.plaidConnected ? (
-      <Row>
+      <Row className="plaidStyling">
        <PlaidLink
           clientName="Change Collective"
           env="development"
@@ -30,7 +30,7 @@ class Charity extends Component {
           onSuccess={handleOnSuccess}>
           Open Link and connect your bank!
         </PlaidLink>
-      </Row> ):(
+        </Row> ):(
         <Form>
         {state.transactions.length === 0 ? (
         <div>
@@ -100,13 +100,13 @@ class Charity extends Component {
               ))}
           </Row>
         <form onSubmit={getTransactions} >
-          <button className='mr-1' variant="outline-dark">Submit Vote</button>
+          <button className='mr-1 btn btn-outline-dark'>Submit Vote</button>
         </form>
           </div>
           ):(
         <form onSubmit={handleVoteSelection} >
             <h5>Your votes are now saved</h5>
-          <button type="submit" className='mr-1' variant="outline-dark">Proceed to Dashboard</button>
+          <button type="submit" className='mr-1 btn btn-outline-dark'>Proceed to Dashboard</button>
         </form>
             )}
         </Form>
