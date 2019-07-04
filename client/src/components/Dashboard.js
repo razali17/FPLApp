@@ -147,7 +147,7 @@ class Dashboard extends Component {
                   {
                     title: 'Sick Kids',
                     value: v5,
-                    color: '#F35B04'
+                    color: '#F0ECFC'
                   }
                 ]}
                 lineWidth={15}
