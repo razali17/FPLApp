@@ -38,7 +38,7 @@ Short-term stretches:\
 Long-term stretches:\
 -Implement live support chat using WebSockets\
 -Connect with STRIPE to implement actual payment towards charities\
--Allow multiple accounts per user through Plaid
--Incoperate a Charities portal/dashboard
--Convert into a shopify app
+-Allow multiple accounts per user through Plaid\
+-Incoperate a Charities portal/dashboard\
+-Convert into a shopify app\
 
