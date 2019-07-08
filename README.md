@@ -22,7 +22,6 @@ NOTE: You need at least Ruby~ 2.6.2 in order to run bundle. Please update your R
 ![Homepage](https://i.imgur.com/vlltSGq.png)
 ![Registration](https://i.imgur.com/zLx7RAc.png)
 ![Plaid Agreement](https://i.imgur.com/qf8xoHZ.png)
-![Select Your Bank](https://i.imgur.com/sCETTYt.png)
 ![Login Your Bank Account](https://i.imgur.com/bqQQclt.png)
 ![View Your Round-ups](https://i.imgur.com/4HPMQZb.png)
 ![Goals Completed With Collective Funds](https://i.imgur.com/1lBsNQV.png)
