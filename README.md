@@ -2,16 +2,16 @@
 
 Collaborators:
 
-[Raza Ali](https://github.com/razali17) & [Kayley Luftig](https://github.com/krl87)
+[Ken Shang](https://github.com/zhshang) & [Kayley Luftig](https://github.com/krl87)
 
-An application designed for those who wants to make a change in the world! This application connects to your bank account using [Plaid](https://plaid.com/) and collects the round-ups from your purchases to collective fund, which then gets donated to charities based on the the total collective choices. Using YOUR change to make a change!
+An application designed for those who want to make a change in the world! This application connects to your bank account using [Plaid](https://plaid.com/) and collects the round-ups from your transactions. The roundups are then added to a collective fund which gets donated to charities based on the votes of the collective. Use YOUR change to make a change!
 
 
 ## Starting the Application
 
 You need **TWO** terminals for this.
 
-In one terminal, run `bundle` to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development by default). Run `bin/rails s` to run the server.
+In one terminal, run `bundle` in the root directory of the app to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development by default). Run `bin/rails s` to run the server.
 
 In the other terminal, `cd` into `client`. Run `npm install`. Then run `npm start` and go to `localhost:3000` in your browser.
 
@@ -40,4 +40,5 @@ Long-term stretches:\
 -Implement live support chat using WebSockets\
 -Connect with STRIPE to implement actual payment towards charities\
 -Allow multiple accounts per user through Plaid
+-Incoperate a Charities portal/dashboard
 
