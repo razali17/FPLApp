@@ -30,6 +30,7 @@ NOTE: You need at least Ruby~ 2.3.7 in order to run bundle. Please update your R
 ## Future Implementations
 
 Short-term stretches:\
+-Add comments\
 -Implement more charity options\
 -Allow users to edit their profile options such as select their round-up denominations(closest dime, dollar etc. )\
 -Using ActionMailer to send confirmation emails to users\
