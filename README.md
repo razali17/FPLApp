@@ -4,8 +4,12 @@ Collaborators:
 
 [Ken Shang](https://github.com/zhshang) & [Kayley Luftig](https://github.com/krl87)
 
-An application designed for those who want to make a change in the world! This application connects to your bank account using [Plaid](https://plaid.com/) and collects the round-ups from your transactions. The roundups are then added to a collective fund which gets donated to charities based on the votes of the collective. Use YOUR change to make a change!
+An application designed for those who want to make a change in the world! This application connects to your bank account using [Plaid](https://plaid.com/) and collects the round-ups from your transactions. The roundups are then added to a collective fund which gets donated to charities based on the votes of the collective. Votes are based on a quadratic voting system. 
 
+Use YOUR change to make a change!
+
+Back End: Ruby on Rails
+Front End: React
 
 ## Starting the Application
 
@@ -15,7 +19,7 @@ In one terminal, run `bundle` in the root directory of the app to install the de
 
 In the other terminal, `cd` into `client`. Run `npm install`. Then run `npm start` and go to `localhost:3000` in your browser.
 
-NOTE: You need at least Ruby~ 2.6.2 in order to run bundle. Please update your RVM first!
+NOTE: You need at least Ruby~ 2.3.7 in order to run bundle. Please update your RVM first!
 
 ## Final Product
 
@@ -30,7 +34,9 @@ NOTE: You need at least Ruby~ 2.6.2 in order to run bundle. Please update your R
 ## Future Implementations
 
 Short-term stretches:\
+-Add comments\
 -Implement more charity options\
+-Unit tests\
 -Allow users to edit their profile options such as select their round-up denominations(closest dime, dollar etc. )\
 -Using ActionMailer to send confirmation emails to users\
 -Refactor codes to make it more dry
