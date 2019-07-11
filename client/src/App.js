@@ -4,14 +4,20 @@ import axios from 'axios';
 import './App.css';
 import { loadReCaptcha } from 'react-recaptcha-google'
 
+  const loadPlayers = (players) => {
+    return players.map( player =>
+      <li>{player.player_first_name} {player.player_last_name} - Team Name: {player.entry_name}</li>
+    )
+  };
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      first_name: "",
-      minileague: "https://fantasy.premierleague.com/api/leagues-classic/141587/standings/",
-      league_name: "",
+      leagueUrl: "https://fantasy.premierleague.com/api/leagues-classic/141587/standings/",
+      leagueName: "",
       players: [],
+      isLoaded: false
     }
   };
 
@@ -38,11 +44,16 @@ class App extends Component {
 
   componentDidMount() {
   const proxyurl = "https://cors-anywhere.herokuapp.com/"
-  fetch(proxyurl+'https://fantasy.premierleague.com/api/entry/139734/')
+
+  fetch(proxyurl+this.state.leagueUrl)
     .then(response => {
       return response.json()
     }).then(data => {
-      this.setState({ first_name: data.player_first_name})
+      this.setState({
+        leagueName: data.league.name,
+        players: data.new_entries,
+        isLoaded: true
+      })
     })
   }
 
@@ -155,7 +166,12 @@ class App extends Component {
     return (
       <div className="App">
         {Children.map(children, this.withRoute)}
-        <h1>{this.state.first_name}</h1>
+        <h1>{this.state.league_name}</h1>
+        <ul>
+          {this.state.isLoaded ?
+          loadPlayers(this.state.players.results)
+          :null}
+        </ul>
       </div>
     );
   }
