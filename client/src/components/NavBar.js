@@ -18,8 +18,9 @@ class NavBar extends Component {
 
     return(
       <div>
+      { state.isLoaded ?
       <Navbar collapseOnSelect expand="lg">
-        <Navbar.Brand to="/">FPL League</Navbar.Brand>
+        <Navbar.Brand to="/">{state.leagueName}</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -47,6 +48,7 @@ class NavBar extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      :null}
       </div>
     )
   }

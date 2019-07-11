@@ -1,12 +1,16 @@
 import React, { Component, Children, cloneElement } from 'react';
 import { Route } from 'react-router-dom';
+import { Table } from 'react-bootstrap/';
 import axios from 'axios';
 import './App.css';
 import { loadReCaptcha } from 'react-recaptcha-google'
 
   const loadPlayers = (players) => {
     return players.map( player =>
-      <li>{player.player_first_name} {player.player_last_name} - Team Name: {player.entry_name}</li>
+      <tr>
+        <td>{player.player_first_name} {player.player_last_name}</td>
+        <td>{player.entry_name}</td>
+      </tr>
     )
   };
 
@@ -166,12 +170,19 @@ class App extends Component {
     return (
       <div className="App">
         {Children.map(children, this.withRoute)}
-        <h1>{this.state.league_name}</h1>
-        <ul>
-          {this.state.isLoaded ?
-          loadPlayers(this.state.players.results)
-          :null}
-        </ul>
+        <Table striped bordered hover variant="dark" responsive >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Squad Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.isLoaded ?
+            loadPlayers(this.state.players.results)
+            :null}
+          </tbody>
+        </Table>
       </div>
     );
   }
