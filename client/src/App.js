@@ -170,7 +170,7 @@ class App extends Component {
     return (
       <div className="App">
         {Children.map(children, this.withRoute)}
-        <Table striped bordered hover variant="dark" responsive >
+        <Table striped bordered hover variant="dark" >
           <thead>
             <tr>
               <th>Name</th>
