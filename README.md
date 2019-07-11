@@ -1,15 +1,4 @@
-# The Change Collective
-
-Collaborators:
-
-[Ken Shang](https://github.com/zhshang) & [Kayley Luftig](https://github.com/krl87)
-
-An application designed for those who want to make a change in the world! This application connects to your bank account using [Plaid](https://plaid.com/) and collects the round-ups from your transactions. The roundups are then added to a collective fund which gets donated to charities based on the votes of the collective. Votes are based on a quadratic voting system. 
-
-Use YOUR change to make a change!
-
-Back End: Ruby on Rails
-Front End: React
+# Fantasy Premier League Website
 
 ## Starting the Application
 
@@ -23,28 +12,6 @@ NOTE: You need at least Ruby~ 2.3.7 in order to run bundle. Please update your R
 
 ## Final Product
 
-![Homepage](https://i.imgur.com/vlltSGq.png)
-![Registration](https://i.imgur.com/zLx7RAc.png)
-![Plaid Agreement](https://i.imgur.com/qf8xoHZ.png)
-![Login Your Bank Account](https://i.imgur.com/bqQQclt.png)
-![View Your Round-ups](https://i.imgur.com/4HPMQZb.png)
-![Goals Completed With Collective Funds](https://i.imgur.com/1lBsNQV.png)
-![Your/Collective Vote Results](https://i.imgur.com/e511NZF.png)
 
 ## Future Implementations
-
-Short-term stretches:\
--Add comments\
--Implement more charity options\
--Unit tests\
--Allow users to edit their profile options such as select their round-up denominations(closest dime, dollar etc. )\
--Using ActionMailer to send confirmation emails to users\
--Refactor codes to make it more dry
-
-Long-term stretches:\
--Implement live support chat using WebSockets\
--Connect with STRIPE to implement actual payment towards charities\
--Allow multiple accounts per user through Plaid\
--Incoperate a Charities portal/dashboard\
--Convert into a shopify app
 
