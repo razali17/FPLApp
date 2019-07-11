@@ -1,0 +1,80 @@
+
+.background {
+  margin-top: -5%;
+  margin-bottom: -5%;
+  background: url(https://i.imgur.com/YDBp1Yl.png);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  align-items: center;
+  text-align: center;
+  height: 1250px;
+}
+
+.loginform {
+  justify-content: center;
+  align-content: center;
+  height: 1100px;
+  margin: 0 auto;
+}
+
+
+input#formBasicEmail.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  color: white;
+  font-size: 1.15em;
+
+}
+
+input[type=text], textarea {
+  ouline: none;
+}
+
+input#formBasicEmail.form-control::placeholder {
+  color: white;
+  ;
+}
+
+input#formBasicPassword.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  color: white;
+  font-size: 1.15em;
+}
+
+input[type=text], textarea {
+  ouline: none;
+}
+
+input#formBasicPassword.form-control::placeholder {
+  color: white;
+  ;
+}
+
+.loginbtn {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  border:  1px solid white;
+  color: white;
+}
+
+.loginbtn:hover {
+  color: white;
+  border:  1px solid black;
+}
+
+.div.form-check {
+  display: flex;
+}
+
+.extra1 {
+  color: white;
+  padding-top: 0.5em;
+  padding-right: 6em;
+}
