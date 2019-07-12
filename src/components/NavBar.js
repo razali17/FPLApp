@@ -8,7 +8,7 @@ import '../App.css';
 
   const playerList = (players) => {
     return players.map(player =>
-        <Button className='mr-1' variant="outline-dark"><Link to="/">{player.player_first_name + player.player_last_name}</Link></Button>
+        <Button className='mr-1' variant="outline-dark"><Link to="/">{player.player_first_name +" "+ player.player_last_name}</Link></Button>
     )
   };
 

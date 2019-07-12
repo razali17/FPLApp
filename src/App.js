@@ -5,6 +5,11 @@ import axios from 'axios';
 import './App.css';
 import { loadReCaptcha } from 'react-recaptcha-google'
 
+
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+  const leagueUrl = "https://fantasy.premierleague.com/api/leagues-classic/141587/standings/?page_new_entries=1&page_standings=1%20"
+  const playerUrl = "https://fantasy.premierleague.com/api/entry/"
+
   const loadPlayers = (players) => {
     return players.map( player =>
       <tr>
@@ -15,14 +20,14 @@ import { loadReCaptcha } from 'react-recaptcha-google'
   };
 
 
-  // const playerInfo = (players) => {
-  //   return players.map( player =>
-  //     <tr>
-  //       <td>{player.player_first_name} {player.player_last_name}</td>
-  //       <td>{player.entry_name}</td>
-  //     </tr>
-  //   )
-  // };
+  const playerInfo = (players) => {
+    return players.map( player =>
+      <tr>
+        <td>{player.player_first_name} {player.player_last_name}</td>
+        <td>{player.entry_name}</td>
+      </tr>
+    )
+  };
 
 class App extends Component {
   constructor(props) {
@@ -57,14 +62,12 @@ class App extends Component {
 
 
   componentDidMount() {
-  const proxyUrl = "https://cors-anywhere.herokuapp.com"
-  const leagueUrl = "https://fantasy.premierleague.com/api/leagues-classic/141587/standings"
-
     fetch(proxyUrl+leagueUrl)
     .then(response => {
       console.log(response)
       return response.json()
     }).then(data => {
+      console.log(data)
       this.setState({
         leagueName: data.league.name,
         players: data.new_entries,
@@ -73,17 +76,17 @@ class App extends Component {
     })
   }
 
-  // getPlayerInfo = () => {
-  // fetch(proxyUrl+"https://fantasy.premierleague.com/api/entry/"+{this.state.players[0].entry})
-  //   .then(response => {
-  //     console.log(response)
-  //     return response.json()
-  //   }).then(data => {
-  //     this.setState({
-  //       isLoaded: true
-  //     })
-  //   })
-  // }
+  getPlayerInfo = () => {
+  fetch(proxyUrl+playerUrl+this.state.players[0].entry)
+    .then(response => {
+      console.log(response)
+      return response.json()
+    }).then(data => {
+      this.setState({
+        isLoaded: true
+      })
+    })
+  }
 
   onLoadRecaptcha = () => {
     if (this.captchaDemo) {
