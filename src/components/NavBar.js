@@ -31,7 +31,7 @@ class NavBar extends Component {
           <Nav>
             <ButtonToolbar>
             {state.isLoaded ?
-            playerList(state.players.results)
+            playerList(state.players)
             :null}
           </ButtonToolbar>
           </Nav>

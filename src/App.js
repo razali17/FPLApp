@@ -63,29 +63,24 @@ class App extends Component {
 
   componentDidMount() {
     fetch(proxyUrl+leagueUrl)
-    .then(response => {
-      console.log(response)
-      return response.json()
-    }).then(data => {
+    .then(response => response.json())
+    .then(data => {
       console.log(data)
       this.setState({
         leagueName: data.league.name,
-        players: data.new_entries,
+        players: data.new_entries.results,
         isLoaded: true
       })
     })
-  }
-
-  getPlayerInfo = () => {
-  fetch(proxyUrl+playerUrl+this.state.players[0].entry)
-    .then(response => {
-      console.log(response)
-      return response.json()
-    }).then(data => {
-      this.setState({
-        isLoaded: true
-      })
-    })
+  //     return fetch(proxyUrl+playerUrl+this.state.players[0].entry)
+  //   .then(response => {
+  //     console.log(response)
+  //     return response.json()
+  //   }).then(data => {
+  //     this.setState({
+  //       isLoaded: true
+  //     })
+  //   })
   }
 
   onLoadRecaptcha = () => {
@@ -206,7 +201,7 @@ class App extends Component {
           </thead>
           <tbody>
             {this.state.isLoaded ?
-            loadPlayers(this.state.players.results)
+            loadPlayers(this.state.players)
             :null}
           </tbody>
         </Table>
