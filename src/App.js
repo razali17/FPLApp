@@ -7,14 +7,18 @@ import { loadReCaptcha } from 'react-recaptcha-google'
 
 
   const proxyUrl = "https://cors-anywhere.herokuapp.com/"
-  const leagueUrl = "https://fantasy.premierleague.com/api/leagues-classic/141587/standings/?page_new_entries=1&page_standings=1%20"
+  const leagueUrl = "https://fantasy.premierleague.com/api/leagues-classic/141587/standings/?page_new_entries=1&page_standings=1%20/"
   const playerUrl = "https://fantasy.premierleague.com/api/entry/"
+  const playerHistory = "https://fantasy.premierleague.com/api/entry/"
 
-  const loadPlayers = (players) => {
-    return players.map( player =>
+  const loadPlayers = (players, ids) => {
+    return players.map((player) =>
       <tr>
         <td><Link to='/' >{player.player_first_name} {player.player_last_name}</Link></td>
         <td>{player.entry_name}</td>
+        {ids.map ((id) => {
+
+        })}
       </tr>
     )
   };
@@ -67,19 +71,19 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      this.setState({
-        leagueName: data.league.name,
-        players: data.new_entries.results,
-        isLoaded: true
+
+      // const playerId = []
+      // data.new_entries.results.forEach((player) => {
+      // fetch(proxyUrl+playerHistory+player.entry+"/history")
+      // })
+      // this.setState({
+      //   leagueName: data.league.name,
+      //   players: data.new_entries.results,
+      //   playerIds: playerId,
+      //   isLoaded: true
+      // })
       })
-      const playerId = []
-      data.new_entries.results.forEach((player) => {
-        playerId.push(player.entry)
-        this.setState({
-          playerIds: playerId
-        })
-      })
-    })
+
   //     return fetch(proxyUrl+playerUrl+this.state.players[0].entry)
   //   .then(response => {
   //     console.log(response)
@@ -211,7 +215,7 @@ class App extends Component {
           </thead>
           <tbody>
             {this.state.isLoaded ?
-            loadPlayers(this.state.players)
+            loadPlayers(this.state.players, this.state.playerIds)
             :null}
           </tbody>
         </Table>
