@@ -1,5 +1,5 @@
 import React, { Component, Children, cloneElement } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap/';
 import axios from 'axios';
 import './App.css';
@@ -13,7 +13,7 @@ import { loadReCaptcha } from 'react-recaptcha-google'
   const loadPlayers = (players) => {
     return players.map( player =>
       <tr>
-        <td>{player.player_first_name} {player.player_last_name}</td>
+        <td><Link to='/' >{player.player_first_name} {player.player_last_name}</Link></td>
         <td>{player.entry_name}</td>
       </tr>
     )
@@ -36,7 +36,8 @@ class App extends Component {
       leagueUrl: "",
       leagueName: "",
       players: [],
-      isLoaded: false
+      isLoaded: false,
+      playerIds: [],
     }
   };
 
@@ -70,6 +71,13 @@ class App extends Component {
         leagueName: data.league.name,
         players: data.new_entries.results,
         isLoaded: true
+      })
+      const playerId = []
+      data.new_entries.results.forEach((player) => {
+        playerId.push(player.entry)
+        this.setState({
+          playerIds: playerId
+        })
       })
     })
   //     return fetch(proxyUrl+playerUrl+this.state.players[0].entry)
@@ -197,6 +205,8 @@ class App extends Component {
             <tr>
               <th>Name</th>
               <th>Squad Name</th>
+              <th>2018/2019 Total Points</th>
+              <th>2018/2019 Rank</th>
             </tr>
           </thead>
           <tbody>
