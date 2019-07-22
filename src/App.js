@@ -72,16 +72,16 @@ class App extends Component {
     .then(data => {
       console.log(data)
 
-      // const playerId = []
-      // data.new_entries.results.forEach((player) => {
-      // fetch(proxyUrl+playerHistory+player.entry+"/history")
-      // })
-      // this.setState({
-      //   leagueName: data.league.name,
-      //   players: data.new_entries.results,
-      //   playerIds: playerId,
-      //   isLoaded: true
-      // })
+      const playerId = []
+      data.new_entries.results.forEach((player) => {
+      fetch(proxyUrl+playerHistory+player.entry+"/history")
+      })
+      this.setState({
+        leagueName: data.league.name,
+        players: data.new_entries.results,
+        playerIds: playerId,
+        isLoaded: true
+      })
       })
 
   //     return fetch(proxyUrl+playerUrl+this.state.players[0].entry)
